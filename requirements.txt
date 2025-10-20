@@ -4,3 +4,5 @@ langchain_core
 dotenv
 numpy
 pandas
+pydantic
+typing
