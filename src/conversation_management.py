@@ -1,7 +1,9 @@
 from langchain_core.messages import SystemMessage
 
 def conversationUpdate(conversation:list, context:str):
-
+    """ Updates the conversation list, keeping first conversation related to question type predicted by question_category model
+        It remembers only last 4 conversations by keeping SystemMessage() at first index"""
+    
     if len(conversation) > 4:
         print("Conversation compressed ...")
         conversation = [conversation[0]] + conversation[-4:]
