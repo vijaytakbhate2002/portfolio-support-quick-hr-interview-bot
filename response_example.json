@@ -1,0 +1,9 @@
+{
+  "question": "You trained a neural network, and the loss decreases but accuracy remains low. What could be happening?",
+  "question_category": "project",
+  "response": {
+    "response_message": "When the loss decreases but the accuracy remains low, it could indicate that the model is struggling to correctly classify the data points. This discrepancy suggests that the model might be overfitting the training data, leading to poor generalization on unseen data. To address this, regularization techniques like dropout or early stopping can be applied to prevent overfitting and improve the model's performance.",
+    "list_items": null,
+    "reference_links": null
+  }
+}

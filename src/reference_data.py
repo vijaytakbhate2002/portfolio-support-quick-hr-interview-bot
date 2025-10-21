@@ -143,3 +143,13 @@ Python | SQL | MLflow | Docker | DVC | Kubeflow | AWS | Flask | GitHub Actions |
 Critical Thinking | Problem Solving | Business Understanding | Intellectual Rigor
 
 """
+
+
+test_questions = [
+    "Explain a machine learning project where your model performed worse than expected. What steps did you take to improve it?",
+    "How would you handle imbalanced classes in a dataset where the minority class is crucial for decision making?",
+    "Describe a scenario where your assumptions about the data turned out wrong. How did you correct the model?",
+    "How would you explain a complex ML model’s prediction to a non-technical stakeholder?",
+    "You trained a neural network, and the loss decreases but accuracy remains low. What could be happening?"
+]
+

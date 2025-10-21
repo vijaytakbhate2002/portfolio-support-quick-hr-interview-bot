@@ -6,3 +6,6 @@ numpy
 pandas
 pydantic
 typing
+mlflwo
+pytest
+boto3
