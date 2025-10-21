@@ -6,6 +6,6 @@ numpy
 pandas
 pydantic
 typing
-mlflwo
+mlflow
 pytest
 boto3
