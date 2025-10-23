@@ -7,7 +7,7 @@ SRC_PATH = os.path.join(PROJECT_ROOT, "src")
 sys.path.extend([SRC_PATH, PROJECT_ROOT])
 
 from src.llm_judge import JudgeLLM
-from src.config import GPT_MODEL_NAME
+from src.config import GPT_MODEL_NAME,TEMPERATURE
 from src.output_structure import InterviewResponse, QuestionCategory, ValidationScores
 from src.prompts import question_category_prompt, judge_model_prompt
 from main import ResumeAssistant
@@ -28,7 +28,9 @@ def assistant():
 def judge():
     return JudgeLLM(
         output_structure=ValidationScores,
-        prompt=judge_model_prompt
+        prompt=judge_model_prompt,
+        model_name= GPT_MODEL_NAME,
+        temperature=TEMPERATURE
     )
 
 
