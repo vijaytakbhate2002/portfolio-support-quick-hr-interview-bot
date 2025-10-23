@@ -4,7 +4,7 @@ from src.reference_data import project, personal, experience, education, soft_sk
 from src.output_structure import QuestionCategory, InterviewResponse
 from src.prompts import question_category_prompt, conversation_prompt
 from src.conversation_management import conversationUpdate
-from src.config import GPT_MODEL_NAME
+from src.config import GPT_MODEL_NAME, TEMPERATURE
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -107,7 +107,7 @@ class ResumeAssistant:
 if __name__ == "__main__":
     assistant = ResumeAssistant(
         model_name=GPT_MODEL_NAME,
-        temperature=0.5,
+        temperature=TEMPERATURE,
         conversation_structure=InterviewResponse,
         question_category_structure=QuestionCategory,
         question_category_prompt=question_category_prompt

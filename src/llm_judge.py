@@ -1,7 +1,7 @@
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 
-from .config import GPT_MODEL_NAME
+from .config import GPT_MODEL_NAME, TEMPERATURE
 from .output_structure import  ValidationScores
 from .prompts import  judge_model_prompt
 
@@ -17,15 +17,18 @@ class JudgeLLM:
     faithfulness_score = []
     correctness_score = []
 
-    def __init__(self, output_structure, prompt):
+    def __init__(self, model_name:str, temperature:float, output_structure, prompt):
         self.output_structure = output_structure
         self.prompt = prompt
+        self.model_name = model_name
+        self.temperature = temperature
 
     def buildChain(self):
         """ Create chain by using with_structured_output and return that chain """
 
         self.model = ChatOpenAI(
-            name=GPT_MODEL_NAME
+            name=self.model_name,
+            temperature=self.temperature,
         )
         self.model = self.model.with_structured_output(self.output_structure)
         chain = self.prompt | self.model
