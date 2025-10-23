@@ -77,7 +77,7 @@ def send_message():
     body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
     msg.attach(MIMEText(body, 'plain'))
 
-    try:
+    try: 
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
         server.login(sender_email, password)
