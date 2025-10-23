@@ -10,4 +10,3 @@ mlflow
 pytest
 boto3
 flask
-email
