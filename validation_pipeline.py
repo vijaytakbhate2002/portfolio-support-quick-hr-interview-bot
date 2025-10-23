@@ -7,7 +7,7 @@ from assistant import ResumeAssistant
 import mlflow
 from mlflow import log_metric, log_param, log_metrics
 import json
-
+ 
 assistant = ResumeAssistant(
         model_name=GPT_MODEL_NAME,
         temperature=0.5,
