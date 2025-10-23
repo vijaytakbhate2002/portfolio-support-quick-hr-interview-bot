@@ -10,7 +10,7 @@ from src.llm_judge import JudgeLLM
 from src.config import GPT_MODEL_NAME,TEMPERATURE
 from src.output_structure import InterviewResponse, QuestionCategory, ValidationScores
 from src.prompts import question_category_prompt, judge_model_prompt
-from main import ResumeAssistant
+from assistant import ResumeAssistant
 
 
 @pytest.fixture(scope="module")

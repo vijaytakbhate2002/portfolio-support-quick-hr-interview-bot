@@ -3,7 +3,7 @@ from src.config import GPT_MODEL_NAME, MLFLOW_TRACKING_URI, TEMPERATURE
 from src.output_structure import InterviewResponse, QuestionCategory, ValidationScores
 from src.prompts import question_category_prompt, judge_model_prompt
 from src.reference_data import test_questions
-from main import ResumeAssistant
+from assistant import ResumeAssistant
 import mlflow
 from mlflow import log_metric, log_param, log_metrics
 import json
