@@ -69,13 +69,9 @@ def send_message():
     email = request.form['email']
     message = request.form['message']
 
-    sender_email = sender_email
-    receiver_email = sender_email
-    password = password
-
     msg = MIMEMultipart()
     msg['From'] = sender_email
-    msg['To'] = receiver_email
+    msg['To'] = sender_email
     msg['Subject'] = f"Portfolio Message from {name}"
 
     body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
@@ -85,7 +81,7 @@ def send_message():
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
         server.login(sender_email, password)
-        server.sendmail(sender_email, receiver_email, msg.as_string())
+        server.sendmail(sender_email, [sender_email, "vijaytakbhate45@gmail.com"], msg.as_string())
         server.quit()
         flash("Message sent successfully!", "success")
     except Exception as e:
