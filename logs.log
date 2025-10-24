@@ -1,0 +1,134 @@
+2025-10-24 15:18:33,268 - werkzeug - INFO -  * Detected change in 'D:\\Vijay_Workspace\\portfolio\\assistant\\app.py', reloading
+2025-10-24 15:18:33,321 - werkzeug - INFO -  * Restarting with stat
+2025-10-24 15:18:33,792 - root - INFO - Loading environment variables...
+2025-10-24 15:18:33,793 - root - INFO - Loaded environment variables...
+2025-10-24 15:18:33,822 - werkzeug - WARNING -  * Debugger is active!
+2025-10-24 15:18:33,826 - werkzeug - INFO -  * Debugger PIN: 535-307-398
+2025-10-24 15:18:49,143 - werkzeug - INFO -  * Detected change in 'D:\\Vijay_Workspace\\portfolio\\assistant\\app.py', reloading
+2025-10-24 15:18:49,198 - werkzeug - INFO -  * Restarting with stat
+2025-10-24 15:18:49,643 - root - INFO - Loading environment variables...
+2025-10-24 15:18:49,643 - root - INFO - Loaded environment variables...
+2025-10-24 15:18:49,666 - werkzeug - WARNING -  * Debugger is active!
+2025-10-24 15:18:49,669 - werkzeug - INFO -  * Debugger PIN: 535-307-398
+2025-10-24 15:19:30,423 - werkzeug - INFO -  * Detected change in 'D:\\Vijay_Workspace\\portfolio\\assistant\\app.py', reloading
+2025-10-24 15:19:30,470 - werkzeug - INFO -  * Restarting with stat
+2025-10-24 15:19:30,932 - root - INFO - Loading environment variables...
+2025-10-24 15:19:30,932 - root - INFO - Loaded environment variables...
+2025-10-24 15:19:30,960 - werkzeug - WARNING -  * Debugger is active!
+2025-10-24 15:19:30,965 - werkzeug - INFO -  * Debugger PIN: 535-307-398
+2025-10-24 15:19:34,067 - werkzeug - INFO -  * Detected change in 'D:\\Vijay_Workspace\\portfolio\\assistant\\app.py', reloading
+2025-10-24 15:19:34,119 - werkzeug - INFO -  * Restarting with stat
+2025-10-24 15:19:34,567 - root - INFO - Loading environment variables...
+2025-10-24 15:19:34,567 - root - INFO - Loaded environment variables...
+2025-10-24 15:19:34,606 - werkzeug - WARNING -  * Debugger is active!
+2025-10-24 15:19:34,610 - werkzeug - INFO -  * Debugger PIN: 535-307-398
+2025-10-24 15:20:57,555 - root - INFO - Entered into get in touch section
+2025-10-24 15:20:57,556 - root - INFO - name of user Vijay Takbhate
+2025-10-24 15:20:57,556 - root - INFO - email of user vijaytakbhate20@gmail.com
+2025-10-24 15:20:57,556 - root - INFO - message of user Hi Vijay,
+
+I am Vanshi, reaching out to you for Data Scientist Role, please let me know when you are free to connect
+
+Thank you,
+Vanshi Ghadage
+2025-10-24 15:20:57,556 - root - INFO - Sending message..
+2025-10-24 15:21:02,537 - root - INFO - Message sent successfully!
+2025-10-24 15:21:02,539 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:21:02] "[32mPOST /send_message HTTP/1.1[0m" 302 -
+2025-10-24 15:21:02,558 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:21:02] "GET / HTTP/1.1" 200 -
+2025-10-24 15:21:02,733 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:21:02] "[36mGET /static/articles_images/precision_recall_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:21:02,743 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:21:02] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-10-24 15:21:02,743 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:21:02] "[36mGET /static/articles_images/ml_lifecycle_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:21:02,749 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:21:02] "[36mGET /static/articles_images/docker_guid_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:21:02,756 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:21:02] "[36mGET /static/articles_images/statistical_inference_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:21:02,765 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:21:02] "[36mGET /static/articles_images/matrix_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:21:02,768 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:21:02] "[36mGET /static/articles_images/types_of_ml_models_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:21:02,769 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:21:02] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-24 15:25:00,041 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:25:00] "GET / HTTP/1.1" 200 -
+2025-10-24 15:25:00,077 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:25:00] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-24 15:25:00,079 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:25:00] "[36mGET /static/articles_images/precision_recall_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:25:00,080 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:25:00] "[36mGET /static/articles_images/types_of_ml_models_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:25:00,109 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:25:00] "[36mGET /static/articles_images/ml_lifecycle_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:25:00,111 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:25:00] "[36mGET /static/articles_images/docker_guid_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:25:00,114 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:25:00] "[36mGET /static/articles_images/statistical_inference_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:25:00,117 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:25:00] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-10-24 15:25:00,119 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:25:00] "[36mGET /static/articles_images/matrix_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:25:24,346 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:25:24] "POST /chat HTTP/1.1" 200 -
+2025-10-24 15:37:05,765 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:05] "GET / HTTP/1.1" 200 -
+2025-10-24 15:37:05,794 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:05] "GET /static/style.css HTTP/1.1" 200 -
+2025-10-24 15:37:05,797 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:05] "GET /static/profile_photos/profile_pic.jpg HTTP/1.1" 200 -
+2025-10-24 15:37:05,799 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:05] "[36mGET /static/articles_images/precision_recall_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:37:05,845 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:05] "[36mGET /static/articles_images/types_of_ml_models_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:37:05,847 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:05] "[36mGET /static/articles_images/statistical_inference_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:37:05,848 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:05] "[36mGET /static/articles_images/docker_guid_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:37:05,848 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:05] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-10-24 15:37:05,848 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:05] "[36mGET /static/articles_images/ml_lifecycle_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:37:05,848 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:05] "[36mGET /static/articles_images/matrix_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:37:53,530 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:53] "GET / HTTP/1.1" 200 -
+2025-10-24 15:37:53,563 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-24 15:37:53,566 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:53] "[36mGET /static/profile_photos/profile_pic.jpg HTTP/1.1[0m" 304 -
+2025-10-24 15:37:53,569 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:53] "[36mGET /static/articles_images/precision_recall_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:37:53,591 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:53] "[36mGET /static/articles_images/types_of_ml_models_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:37:53,593 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:53] "[36mGET /static/articles_images/ml_lifecycle_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:37:53,594 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:53] "[36mGET /static/articles_images/docker_guid_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:37:53,598 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:53] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-10-24 15:37:53,600 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:53] "[36mGET /static/articles_images/statistical_inference_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:37:53,601 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:37:53] "[36mGET /static/articles_images/matrix_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:38:30,890 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:38:30] "GET / HTTP/1.1" 200 -
+2025-10-24 15:38:30,936 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:38:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-24 15:38:30,943 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:38:30] "[36mGET /static/profile_photos/profile_pic.jpg HTTP/1.1[0m" 304 -
+2025-10-24 15:38:30,944 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:38:30] "[36mGET /static/articles_images/precision_recall_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:38:30,965 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:38:30] "[36mGET /static/articles_images/types_of_ml_models_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:38:30,968 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:38:30] "[36mGET /static/articles_images/ml_lifecycle_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:38:30,972 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:38:30] "[36mGET /static/articles_images/docker_guid_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:38:30,977 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:38:30] "[36mGET /static/articles_images/statistical_inference_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:38:30,982 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:38:30] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-10-24 15:38:30,984 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:38:30] "[36mGET /static/articles_images/matrix_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:47:53,120 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:47:53] "GET / HTTP/1.1" 200 -
+2025-10-24 15:47:53,154 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:47:53] "GET /static/style.css HTTP/1.1" 200 -
+2025-10-24 15:47:53,165 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:47:53] "[36mGET /static/profile_photos/profile_pic.jpg HTTP/1.1[0m" 304 -
+2025-10-24 15:47:53,167 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:47:53] "[36mGET /static/articles_images/precision_recall_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:47:53,199 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:47:53] "[36mGET /static/articles_images/types_of_ml_models_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:47:53,201 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:47:53] "[36mGET /static/articles_images/ml_lifecycle_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:47:53,204 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:47:53] "[36mGET /static/articles_images/docker_guid_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:47:53,206 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:47:53] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-10-24 15:47:53,213 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:47:53] "[36mGET /static/articles_images/statistical_inference_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:47:53,214 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:47:53] "[36mGET /static/articles_images/matrix_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:48:38,772 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:48:38] "GET / HTTP/1.1" 200 -
+2025-10-24 15:48:38,810 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:48:38] "GET /static/style.css HTTP/1.1" 200 -
+2025-10-24 15:48:38,816 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:48:38] "[36mGET /static/articles_images/precision_recall_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:48:38,817 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:48:38] "[36mGET /static/profile_photos/profile_pic.jpg HTTP/1.1[0m" 304 -
+2025-10-24 15:48:38,836 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:48:38] "[36mGET /static/articles_images/types_of_ml_models_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:48:38,838 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:48:38] "[36mGET /static/articles_images/docker_guid_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:48:38,841 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:48:38] "[36mGET /static/articles_images/ml_lifecycle_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:48:38,841 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:48:38] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-10-24 15:48:38,844 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:48:38] "[36mGET /static/articles_images/statistical_inference_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:48:38,851 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:48:38] "[36mGET /static/articles_images/matrix_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:55:17,580 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:55:17] "GET / HTTP/1.1" 200 -
+2025-10-24 15:55:17,625 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:55:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-24 15:55:17,626 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:55:17] "[36mGET /static/articles_images/types_of_ml_models_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:55:17,627 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:55:17] "[36mGET /static/articles_images/precision_recall_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:55:17,656 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:55:17] "[36mGET /static/articles_images/ml_lifecycle_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:55:17,658 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:55:17] "[36mGET /static/articles_images/docker_guid_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:55:17,661 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:55:17] "[36mGET /static/articles_images/statistical_inference_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:55:17,662 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:55:17] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-10-24 15:55:17,667 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:55:17] "[36mGET /static/articles_images/matrix_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:57:45,622 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:57:45] "GET / HTTP/1.1" 200 -
+2025-10-24 15:57:45,662 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:57:45] "[33mGET /static/images/profile-nav.jpg HTTP/1.1[0m" 404 -
+2025-10-24 15:57:45,670 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:57:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-24 15:57:45,671 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:57:45] "[36mGET /static/articles_images/precision_recall_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:57:45,703 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:57:45] "[36mGET /static/articles_images/types_of_ml_models_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:57:45,705 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:57:45] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-10-24 15:57:45,708 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:57:45] "[36mGET /static/articles_images/ml_lifecycle_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:57:45,710 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:57:45] "[36mGET /static/articles_images/docker_guid_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:57:45,712 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:57:45] "[36mGET /static/articles_images/statistical_inference_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:57:45,712 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:57:45] "[36mGET /static/articles_images/matrix_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:58:00,651 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:58:00] "GET / HTTP/1.1" 200 -
+2025-10-24 15:58:00,687 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:58:00] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-10-24 15:58:00,690 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:58:00] "[36mGET /static/profile_photos/profile_pic.jpg HTTP/1.1[0m" 304 -
+2025-10-24 15:58:00,695 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:58:00] "[36mGET /static/articles_images/precision_recall_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:58:00,719 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:58:00] "[36mGET /static/articles_images/types_of_ml_models_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:58:00,719 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:58:00] "[36mGET /static/articles_images/docker_guid_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:58:00,721 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:58:00] "[36mGET /static/articles_images/ml_lifecycle_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:58:00,724 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:58:00] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-10-24 15:58:00,728 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:58:00] "[36mGET /static/articles_images/statistical_inference_article.png HTTP/1.1[0m" 304 -
+2025-10-24 15:58:00,730 - werkzeug - INFO - 127.0.0.1 - - [24/Oct/2025 15:58:00] "[36mGET /static/articles_images/matrix_article.png HTTP/1.1[0m" 304 -

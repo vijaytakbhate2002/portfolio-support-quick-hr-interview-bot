@@ -4,14 +4,21 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
 import os
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', filename='logs.log')
 
 load_dotenv()
 
+logging.info("Loading environment variables...")
 sender_email = os.getenv("EMAIL_USER")
-password = os.getenv("EMAIL_PASS")
+app_password = os.getenv("APP_PASS")
+logging.info("Loaded environment variables...")
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SESSION_SECRET', 'dev-secret-key-change-in-production')
+
 
 TEMPLATE_RESPONSES = {
     "hello": "Hello! I'm the AI HR Assistant for this portfolio. I can help you learn about the candidate's AI and MLOps experience. What would you like to know?",
@@ -21,6 +28,7 @@ TEMPLATE_RESPONSES = {
     "contact": "You can download the resume from the Resume section below, or use the Contact section to connect directly for the next round of interviews!",
     "default": "That's an interesting question! As a demo chatbot, I'm using template responses right now. The full AI integration is coming soon. Meanwhile, you can explore the portfolio sections below to learn more about the candidate's projects and skills!"
 }
+
 
 def get_template_response(user_message):
     message_lower = user_message.lower()
@@ -38,9 +46,11 @@ def get_template_response(user_message):
     else:
         return TEMPLATE_RESPONSES["default"]
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/chat', methods=['POST'])
 def chat():
@@ -58,6 +68,7 @@ def chat():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+
 @app.route('/static/<path:filename>')
 def serve_static(filename):
     return send_from_directory('static', filename)
@@ -69,6 +80,11 @@ def send_message():
     email = request.form['email']
     message = request.form['message']
 
+    logging.info("Entered into get in touch section")
+    logging.info(f"name of user {name}")
+    logging.info(f"email of user {email}")
+    logging.info(f"message of user {message}")
+
     msg = MIMEMultipart()
     msg['From'] = sender_email
     msg['To'] = sender_email
@@ -77,15 +93,17 @@ def send_message():
     body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
     msg.attach(MIMEText(body, 'plain'))
 
-    try: 
+    try:
+        logging.info("Sending message..")
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
-        server.login(sender_email, password)
-        server.sendmail(sender_email, [sender_email, "vijaytakbhate45@gmail.com"], msg.as_string())
+        server.login(sender_email, app_password)
+        server.sendmail(sender_email, ["takbhatevijay@gmail.com"], msg.as_string())
         server.quit()
         flash("Message sent successfully!", "success")
+        logging.info("Message sent successfully!")
     except Exception as e:
-        print(e)
+        logging.Error(e)
         flash("Failed to send message. Please try again.", "error")
 
     return redirect(url_for('index'))

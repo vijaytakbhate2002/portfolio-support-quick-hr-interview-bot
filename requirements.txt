@@ -10,3 +10,4 @@ mlflow
 pytest
 boto3
 flask
+logging
