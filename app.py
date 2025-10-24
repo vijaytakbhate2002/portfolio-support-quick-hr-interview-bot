@@ -2,9 +2,14 @@ from flask import Flask, render_template, request, jsonify, send_from_directory,
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from src.config import GPT_MODEL_NAME, TEMPERATURE
+from src.output_structure import InterviewResponse, QuestionCategory
+from src.prompts import question_category_prompt
+from assistant import ResumeAssistant
 from dotenv import load_dotenv
 import os
 import logging
+import jinja2
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', filename='logs.log')
 
@@ -20,50 +25,93 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SESSION_SECRET', 'dev-secret-key-change-in-production')
 
 
-TEMPLATE_RESPONSES = {
-    "hello": "Hello! I'm the AI HR Assistant for this portfolio. I can help you learn about the candidate's AI and MLOps experience. What would you like to know?",
-    "skills": "This candidate has expertise in Python, Machine Learning, MLOps tools like MLflow and Airflow, containerization with Docker, and LLM operations. They also work with frameworks like TensorFlow, PyTorch, and cloud platforms.",
-    "projects": "The portfolio showcases three main projects: Medical Insurance Cost Prediction, Turbofan Jet Engine Lifecycle Prediction, and other ML/LLM projects. Would you like details about any specific project?",
-    "experience": "The candidate has experience in AI/ML model development, MLOps pipeline automation, model monitoring, and deployment. They work with the full ML lifecycle from data processing to production deployment.",
-    "contact": "You can download the resume from the Resume section below, or use the Contact section to connect directly for the next round of interviews!",
-    "default": "That's an interesting question! As a demo chatbot, I'm using template responses right now. The full AI integration is coming soon. Meanwhile, you can explore the portfolio sections below to learn more about the candidate's projects and skills!"
-}
+class AIAssistant:
+    """ This class helps configuring llm model and also responsible for llm communication """
 
+    def __init__(self, model_name:str, temperature:float, 
+                 conversation_structure, question_category_structure, 
+                 question_category_prompt):
+        
+        self.model_name = model_name
+        self.temperature = temperature
+        self.conversation_structure = conversation_structure
+        self.question_category_structure = question_category_structure
+        self.question_category_prompt = question_category_prompt
 
-def get_template_response(user_message):
-    message_lower = user_message.lower()
+        self.assistant = ResumeAssistant(
+                model_name=model_name,
+                temperature=temperature,
+                conversation_structure=conversation_structure,
+                question_category_structure=question_category_structure,
+                question_category_prompt=question_category_prompt
+
+            )
     
-    if any(word in message_lower for word in ["hello", "hi", "hey", "greetings"]):
-        return TEMPLATE_RESPONSES["hello"]
-    elif any(word in message_lower for word in ["skill", "technology", "tech stack", "tools"]):
-        return TEMPLATE_RESPONSES["skills"]
-    elif any(word in message_lower for word in ["project", "work", "portfolio"]):
-        return TEMPLATE_RESPONSES["projects"]
-    elif any(word in message_lower for word in ["experience", "background", "expertise"]):
-        return TEMPLATE_RESPONSES["experience"]
-    elif any(word in message_lower for word in ["contact", "resume", "cv", "hire"]):
-        return TEMPLATE_RESPONSES["contact"]
-    else:
-        return TEMPLATE_RESPONSES["default"]
+
+    def chatWithLLM(self, question:str) -> tuple:
+        """ Args:
+                question: str (question need to provide to llm model)
+            Returns:
+                response, question_category: tuple (Returns response provided by llm with category of 
+                                             qeustion [personal, project, soft_skills, experience, education etc.])
+        """
+
+        result = self.assistant.chatWithModel(question=question)
+        logging.info(f"result from assitant is {result}")
+        return result['response'], result['question_category'] 
+    
+
+    def responseFormat(self, llm_response:dict) -> str:
+        """ Args: 
+                llm_response: str (this is the dictionary containing llm response)
+            Returns:
+                    formatted_response: str (converts lists into bullet points and reference links into bullet points) """
+        
+        response_message = llm_response.response_message
+        list_items = ""
+        reference_linsk = ""
+        if type(llm_response.list_items) == list:
+            list_items = "\n".join(llm_response.list_items) + "\n"
+        if type(llm_response.reference_links) == list:
+            reference_linsk = "\n".join(llm_response.reference_links) + "\n"
+        return response_message + " " + list_items + " " + reference_linsk
+    
+assitant = AIAssistant(
+    model_name=GPT_MODEL_NAME,
+    temperature=TEMPERATURE,
+    conversation_structure=InterviewResponse,
+    question_category_structure=QuestionCategory,
+    question_category_prompt=question_category_prompt
+)
 
 
 @app.route('/')
 def index():
+    """ Defalut page visibility """
     return render_template('index.html')
 
 
 @app.route('/chat', methods=['POST'])
 def chat():
+    """ 
+        Get's user input text, provide it to llm, take the response, format the response and return with Jsonify \
+    """
     try:
+        logging.info("Trying to reach llm ...")
         data = request.get_json()
         user_message = data.get('message', '')
-        
+        logging.info(f"User message is {user_message}...")
+
         if not user_message:
             return jsonify({'error': 'No message provided'}), 400
         
-        ai_response = get_template_response(user_message)
-        
-        return jsonify({'response': ai_response})
+        ai_response, question_category = assitant.chatWithLLM(user_message)
+        formatted_response = assitant.responseFormat(ai_response)
+
+        print(f"AI Reponse: {ai_response.response_message}")
+        logging.info(f"AI Reponse: {formatted_response}")
+
+        return jsonify({'AI Assistant': formatted_response})
     
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -71,19 +119,20 @@ def chat():
 
 @app.route('/static/<path:filename>')
 def serve_static(filename):
+    """ 
+        Responsible to serve all static infromation, images to frontend 
+    """
     return send_from_directory('static', filename)
 
 
 @app.route("/send_message", methods=["POST"])
 def send_message():
+    """ 
+    Serves as backend for get in touch section (direct email from protfoilo)
+    """
     name = request.form['name']
     email = request.form['email']
     message = request.form['message']
-
-    logging.info("Entered into get in touch section")
-    logging.info(f"name of user {name}")
-    logging.info(f"email of user {email}")
-    logging.info(f"message of user {message}")
 
     msg = MIMEMultipart()
     msg['From'] = sender_email

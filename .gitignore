@@ -1,7 +1,5 @@
 .env
 dev_env/
-
-# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -23,26 +21,20 @@ wheels/
 .installed.cfg
 *.egg
 
-# Virtual environments
 venv/
 ENV/
 env/
 
-# Flask
 instance/
 .webassets-cache
-
-# Environment variables
 .env
 .env.local
-
-# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# OS
 .DS_Store
 Thumbs.db
+logs.log

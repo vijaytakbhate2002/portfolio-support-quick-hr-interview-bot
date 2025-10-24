@@ -804,56 +804,6 @@ body {
     margin-top: 1rem;
 }
 
-/* .hero-photo {
-    flex: 1 1 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.profile-photo {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    border: 4px solid white;
-}
- */
-/* .profile-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.profile-ring {
-  background: conic-gradient(#007bff, #00c9ff, #007bff);
-  padding: 5px;
-  border-radius: 50%;
-  animation: rotate 6s linear infinite;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.profile-photo {
-  width: 230px;
-  height: 230px;
-  border-radius: 50%;
-  border: 4px solid white;
-  display: block;
-  object-fit: cover;
-}
-
-.profile-ring:hover {
-  transform: scale(1.07);
-  box-shadow: 0 0 25px rgba(0, 153, 255, 0.6);
-}
-
-@keyframes rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-} */
-
-
 .profile-photo {
   width: 230px;
   height: 230px;
