@@ -10,6 +10,9 @@ from dotenv import load_dotenv
 import os
 import logging
 
+if not os.path.exists("logs.log"):
+    open("logs.log", "w").close()
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', filename='logs.log')
 
 load_dotenv()
