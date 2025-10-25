@@ -145,16 +145,10 @@ Integrated **GitHub Actions** to automatically test LLM responses and maintain m
 
 ## 🎥 Application Demo
 
-🖼️ <img width="1616" height="777" alt="image" src="https://github.com/user-attachments/assets/b0b9b959-a181-404f-9c85-bfc13d0ed817" />
-
-🖼️ <img width="732" height="711" alt="image" src="https://github.com/user-attachments/assets/a0ec5740-3677-4b36-b9fc-6d489e6e1793" />
-
-🖼️ <img width="766" height="722" alt="image" src="https://github.com/user-attachments/assets/e8420fdc-d458-4b70-a937-2e2df0b9ad1f" />
-
-🖼️ <img width="978" height="810" alt="image" src="https://github.com/user-attachments/assets/b387f6be-3b1c-47c0-95ab-96eb9e33c5da" />
-
-
-🎬 *[Embed demo video link here]*
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b0b9b959-a181-404f-9c85-bfc13d0ed817" width="49%" />
+  <img src="https://github.com/user-attachments/assets/b387f6be-3b1c-47c0-95ab-96eb9e33c5da" width="49%" />
+</p>
 
 ---
 
@@ -186,6 +180,6 @@ It’s more than just a chatbot — it’s an intelligent **AI-driven hiring ass
 > 💡 *“AI won’t replace recruiters — but recruiters who use AI will replace those who don’t.”*
 > — Vijay Takbhate
 
-```
+
 
 
