@@ -9,10 +9,6 @@ from assistant import ResumeAssistant
 from dotenv import load_dotenv
 import os
 
-if not os.path.exists("logs.log"):
-    open("logs.log", "w").close()
-
-
 load_dotenv()
 
 sender_email = os.getenv("EMAIL_USER")

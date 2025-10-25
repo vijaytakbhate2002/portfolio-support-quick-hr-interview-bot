@@ -1,73 +1,183 @@
 
-# 🤖 AI-Powered Resume Assistant for HR
+# 🤖 AI-Powered Portfolio & Resume Assistant for HR
+
+[![Python](https://img.shields.io/badge/Python-3.x-blue)]()
+[![Flask](https://img.shields.io/badge/Flask-2.x-lightgrey)]()
+[![LangChain](https://img.shields.io/badge/LangChain-Integrated-orange)]()
+[![Docker](https://img.shields.io/badge/Docker-ready-brightgreen)]()
+[![GitHub Actions](https://img.shields.io/badge/CI-CD-blue)]()
+[![MLflow](https://img.shields.io/badge/MLflow-Tracking-informational)]()
+[![AWS EC2](https://img.shields.io/badge/AWS-EC2-yellow)]()
+
+---
 
 ## 🚀 Project Overview
-This project is an **AI chatbot** designed to assist HR professionals in interacting with my resume and conducting **quick virtual interviews**.  
-It contains all my professional details — contact info, projects, experience, education, and soft skills — making it a **pre-screening tool** for HR to evaluate my fit for **Data Science** or **MLOps roles** before direct contact.
+
+This project is an **AI-powered interactive portfolio** integrated with a **smart HR assistant**.  
+It allows HR professionals to **interview me virtually** — the AI can understand, categorize, and answer HR questions directly from my resume using **LangChain + GPT-5-mini**.
+
+The system is designed to **save recruiters’ time** by conducting quick **pre-screening interviews**, analyzing answers for accuracy and relevance, and providing metrics for each response.
+
+🔗 **Live Demo:**  
+👉 [http://ec2-54-167-49-203.compute-1.amazonaws.com:5000/](http://ec2-54-167-49-203.compute-1.amazonaws.com:5000/)
 
 ---
 
-## 🛠 Key Features
-- **Instant Question Categorization:** Classifies HR questions into:
+## 🧠 Workflow & Architecture
+
+1. **Question Categorization (LLM 1)**  
+   - The first LLM predicts which part of the resume is relevant:  
+     ```
+     ["project", "experience", "personal", "education", "soft_skills", "others"]
+     ```
+
+2. **Context-Aware Answering (LLM 2)**  
+   - Based on the predicted category, the assistant extracts **only that section** of the resume and combines it with the HR’s question.
+   - This **smart prompting** reduces token usage and cost while maintaining contextually correct answers.
+
+3. **Response Validation (LLM 3)**  
+   - A third LLM validates each generated answer using **MLflow** metrics:
+     - ✅ **Relevancy**
+     - 🛡 **Faithfulness**
+     - 🎯 **Correctness**
+
+4. **Tracking & Monitoring**
+   - All metrics are logged in **MLflow**, hosted on an **AWS EC2 instance** for live tracking and analytics.
+
+5. **Portfolio Integration**
+   - The AI chatbot is embedded directly into my personal **one-page portfolio website**, allowing HR to chat and review my details seamlessly.
+
+6. **Automation & Deployment**
+   - Used **GitHub Actions** for LLM testing automation.
+   - Dockerized the app for easy deployment and portability.
+   - Hosted on **AWS EC2**, running continuously 24×7.
+
+---
+
+## 🧩 Tech Stack
+
+| Layer | Technologies Used |
+|-------|-------------------|
+| 💬 AI Assistant | LangChain, GPT-5-mini |
+| 🧠 Backend | Python, Flask |
+| 📈 Tracking | MLflow, AWS EC2 |
+| 🧰 CI/CD | GitHub Actions |
+| 🐳 Containerization | Docker |
+| ☁️ Deployment | AWS EC2 (Ubuntu) |
+| 🔒 Communication | SMTP (Email integration) |
+
+---
+
+## ⚙️ Setup Instructions
+
+### **1️⃣ Clone Repository**
+```bash
+git clone https://github.com/vijaytakbhate2002/portfolio-support-quick-hr-interview-bot.git
+cd portfolio-support-quick-hr-interview-bot
+````
+
+### **2️⃣ Install Dependencies**
+
+```bash
+pip install -r requirements.txt
 ```
 
-["project", "personal", "experience", "education", "soft_skills", "others"]
+### **3️⃣ Create `.env` File**
 
-````
-- **Intelligent Answer Generation:** Uses GPT-5-mini to generate structured responses from my resume:
-```python
-response_message: str  # AI's answer
-list_items: Optional[Union[str, list[str]]] = None  # Additional details if needed
-reference_links: Optional[Union[str, list[str]]] = None  # Related references
-````
+Create a `.env` file in the root directory and add:
 
-* **Automated Response Validation:** Third LLM acts as a judge to score responses on:
+```
+OPENAI_API_KEY=sk-dummyapikey
+EMAIL_USER=vijaytakbhateportfolio@gmail.com
+APP_PASS=dummypassword
+```
 
-  * ✅ Relevancy
-  * 🛡 Faithfulness
-  * 🎯 Correctness
-    Scores are tracked in **MLflow** on an **AWS EC2 instance** for remote monitoring.
+### **4️⃣ Run the Application**
 
----
+```bash
+python app.py
+```
 
-## 🔄 Workflow
-
-1. **HR initiates conversation** with a greeting or a question.
-2. **Question Classification:** First LLM identifies the category.
-3. **Response Generation:** Second LLM (GPT-5-mini) crafts a structured response.
-4. **Validation:** Third LLM evaluates the response and generates scoring metrics.
-5. **Score Tracking:** MLflow stores scores for each interaction, enabling **analytics and monitoring**.
+Visit:
+👉 `http://localhost:5000`
 
 ---
 
-## ✅ Current Status
+## 🐳 Run with Docker
 
-* Multi-LLM architecture implemented
-* Response scoring & MLflow tracking functional
-* AWS EC2 setup complete for remote monitoring
+### **Pull the Image**
+
+```bash
+docker pull vijaytakbhate1/portfolio-support-quick-hr-interview-bot:latest
+```
+
+### **Run the Container**
+
+```bash
+docker run -d \
+  -p 5000:5000 \
+  -e OPENAI_API_KEY=sk-dummyapikey \
+  -e EMAIL_USER=vijaytakbhateportfolio@gmail.com \
+  -e APP_PASS=dummypassword \
+  vijaytakbhate1/portfolio-support-quick-hr-interview-bot:latest
+```
+
+Visit your app at:
+👉 `http://localhost:5000`
+
+---
+
+## 🧰 GitHub Actions
+
+Integrated **GitHub Actions** to automatically test LLM responses and maintain model accuracy before deployment.
 
 ---
 
 ## 🌟 Future Plans
 
-* Integrate **Grafana & Prometheus** for real-time monitoring 📊
-* Build a **Docker image** for easy sharing 🐳
-* Create a personal **portfolio website** 🌐
-* Deploy the application fully on **AWS** ☁️
+* Integrate **Grafana & Prometheus** for real-time metrics 📊
+* Develop a **dashboard for HR analytics**
+* Expand AI memory for longer, context-aware interviews 🧠
+* Enhance Docker orchestration with **Kubernetes**
+* Deploy a multi-service pipeline via **Kubeflow**
 
 ---
 
-## 🧰 Tech Stack
+## 🎥 Application Demo
 
-* **Python**
-* **GPT-5-mini** (via LangChain)
-* **MLflow**, **AWS EC2**
-* (Planned) **Grafana**, **Prometheus**, **Docker**
+🖼️ *[Add screenshots here]*
+🎬 *[Embed demo video link here]*
 
 ---
 
-## 🎯 Why This Project?
+## 🙌 About This Project
 
-This project demonstrates a **smart, automated way for HR to pre-screen candidates**, saving time and providing **accurate insights** into skills, experience, and projects — all **before a live interview**.
+This AI-powered assistant showcases how **AI can simplify HR workflows** — enabling recruiters to understand a candidate’s fit before an actual interview.
+
+It’s more than just a chatbot — it’s an intelligent **AI-driven hiring assistant** integrated into a personal portfolio.
 
 ---
+
+## 📬 Get in Touch
+
+💼 **Portfolio:** [Visit My Portfolio](http://ec2-54-167-49-203.compute-1.amazonaws.com:5000/)
+📧 **Email:** [vijaytakbhateportfolio@gmail.com](mailto:vijaytakbhate20@gmail.com)
+🐙 **GitHub:** [vijaytakbhate2002](https://github.com/vijaytakbhate2002)
+🐙 **LinkedIn:** [My Linkedin](https://www.linkedin.com/in/vijay-takbhate-b9231a236/)
+
+---
+## 🌟 Future Plans
+
+- 📊 **Integrate Prometheus & Grafana** for real-time server performance monitoring and visualization.  
+- 🧠 Expand AI capabilities for **longer, context-aware conversations** across multiple HR sessions.  
+- ☁️ Implement **Kubernetes (K8s)** orchestration for better scalability and fault tolerance.  
+- 🔒 Strengthen application security with HTTPS, authentication layers, and environment isolation.  
+
+---
+
+> 💡 *“AI won’t replace recruiters — but recruiters who use AI will replace those who don’t.”*
+> — Vijay Takbhate
+
+```
+
+
