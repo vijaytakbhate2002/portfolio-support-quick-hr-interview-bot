@@ -68,21 +68,55 @@ body {
 }
 
 .hero {
+    position: relative;
+    overflow: hidden;
     padding: 100px 2rem 60px;
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
 }
 
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/static/profile_photos/bg-3.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px) brightness(0.9);
+    z-index: -2;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f0f9ffcc 0%, #e0f2fecc 100%);
+    z-index: -1;
+}
+
 .hero-container {
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     align-items: center;
+    z-index: 1;
 }
+
+.hero-container {
+    position: relative;
+    z-index: 1;
+}
+
 
 .hero-content {
     animation: fadeInLeft 0.8s ease-out;
@@ -817,3 +851,32 @@ body {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
 }
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1e293b; /* same dark tone as your text */
+    font-family: "Poppins", sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #3b82f6; /* cursor color */
+    width: 0; /* typing start */
+    animation: typing 3s steps(25, end) forwards, blink 0.7s step-end infinite;
+}
+
+.highlight {
+    color: #2563eb; /* your existing blue highlight */
+}
+
+/* typing animation */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* blinking cursor */
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+

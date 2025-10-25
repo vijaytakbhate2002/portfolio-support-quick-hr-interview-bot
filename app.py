@@ -9,7 +9,6 @@ from assistant import ResumeAssistant
 from dotenv import load_dotenv
 import os
 import logging
-import jinja2
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', filename='logs.log')
 
@@ -19,7 +18,6 @@ logging.info("Loading environment variables...")
 sender_email = os.getenv("EMAIL_USER")
 app_password = os.getenv("APP_PASS")
 logging.info("Loaded environment variables...")
-
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SESSION_SECRET', 'dev-secret-key-change-in-production')
