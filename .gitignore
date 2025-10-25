@@ -37,3 +37,4 @@ instance/
 .DS_Store
 Thumbs.db
 logs.log
+credentials

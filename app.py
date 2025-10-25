@@ -8,19 +8,15 @@ from src.prompts import question_category_prompt
 from assistant import ResumeAssistant
 from dotenv import load_dotenv
 import os
-import logging
 
 if not os.path.exists("logs.log"):
     open("logs.log", "w").close()
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', filename='logs.log')
 
 load_dotenv()
 
-logging.info("Loading environment variables...")
 sender_email = os.getenv("EMAIL_USER")
 app_password = os.getenv("APP_PASS")
-logging.info("Loaded environment variables...")
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SESSION_SECRET', 'dev-secret-key-change-in-production')
@@ -58,7 +54,6 @@ class AIAssistant:
         """
 
         result = self.assistant.chatWithModel(question=question)
-        logging.info(f"result from assitant is {result}")
         return result['response'], result['question_category'] 
     
 
@@ -98,19 +93,14 @@ def chat():
         Get's user input text, provide it to llm, take the response, format the response and return with Jsonify \
     """
     try:
-        logging.info("Trying to reach llm ...")
         data = request.get_json()
         user_message = data.get('message', '')
-        logging.info(f"User message is {user_message}...")
 
         if not user_message:
             return jsonify({'error': 'No message provided'}), 400
         
         ai_response, question_category = assitant.chatWithLLM(user_message)
         formatted_response = assitant.responseFormat(ai_response)
-
-        print(f"AI Reponse: {ai_response.response_message}")
-        logging.info(f"AI Reponse: {formatted_response}")
 
         return jsonify({'AI Assistant': formatted_response})
     
@@ -144,20 +134,17 @@ def send_message():
     msg.attach(MIMEText(body, 'plain'))
 
     try:
-        logging.info("Sending message..")
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
         server.login(sender_email, app_password)
         server.sendmail(sender_email, ["takbhatevijay@gmail.com"], msg.as_string())
         server.quit()
         flash("Message sent successfully!", "success")
-        logging.info("Message sent successfully!")
     except Exception as e:
-        logging.Error(e)
         flash("Failed to send message. Please try again.", "error")
 
     return redirect(url_for('index'))
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=False)
