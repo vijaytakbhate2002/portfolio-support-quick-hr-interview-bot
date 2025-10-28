@@ -64,8 +64,7 @@ Highly motivated Data Scientist and MLOps Engineer with hands-on experience in b
 # ----------------- PROJECTS -----------------
 project = """
 
- 1. AI-Powered Portfolio & Resume Assistant for HR
- Oct 2025
+ 1. AI-Powered Portfolio & Resume Assistant for HR |  Oct 2025
  • Developed an AI-integrated portfolio system enabling recruiters to conduct virtual HR interviews using
  LangChain and GPT-5-mini.
  • Implemented a multi-LLM pipeline for dynamic question categorization, contextual response generation, and
