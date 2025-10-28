@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & MLOps Portfolio - Vijay Takbhate</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            {# <div class="logo">AI & MLOps Portfolio</div>#}
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#get-in-touch">Get-In-Touch</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Hi, I'm <span class="highlight">Vijay Takbhate</span></h1>
+                <p class="hero-subtitle">AI/ML Engineer | MLOps Specialist | LLMOps Enthusiast</p>
+                <p class="hero-description">
+                    Building intelligent systems with Machine Learning, automating ML workflows with MLOps,
+                    and creating production-ready AI solutions. Passionate about bringing AI from research to real-world
+                    impact.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#resume" class="btn btn-secondary">Download Resume</a>
+                </div>
+            </div>
+
+            <div class="chatbot-container-hero">
+                <div class="chatbot-header">
+                    <div class="chatbot-title">
+                        <i class="fas fa-robot"></i>
+                        <span>AI HR Assistant</span>
+                    </div>
+                    <div class="demo-badge">Take quick interview</div>
+                </div>
+                <div class="chatbot-messages" id="chatMessages">
+                    <div class="message ai-message">
+                        <div class="message-content">
+                            <strong>AI Assistant:</strong> Hello! I'm the HR chatbot assistant. Ask me about skills,
+                            projects, or experience.
+                        </div>
+                    </div>
+                </div>
+                <div class="chatbot-input">
+                    <input type="text" id="userInput" placeholder="Ask me anything about this portfolio..." />
+                    <button id="sendBtn" class="send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="chatbot-footer">
+                    <small>💡 complete your first interview round with me</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p class="about-text">
+                    I'm an AI/ML Engineer specializing in building end-to-end machine learning solutions and deploying
+                    them at scale.
+                    My expertise spans from data preprocessing and model development to MLOps pipeline automation and
+                    production deployment.
+                    I'm passionate about leveraging cutting-edge AI technologies to solve real-world problems.
+                </p>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Programming</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Decision Language (Business Rule Engine)</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-brain"></i> ML/AI</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">Scikit-learn</span>
+                            <span class="skill-tag">Hugging Face</span>
+                            <span class="skill-tag">Math</span>
+                            <span class="skill-tag">OpenAI</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-cogs"></i> MLOps</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MLflow</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">DVC</span>
+                            <span class="skill-tag">Dagshub</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-cogs"></i> LLMOps</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">LangChain</span>
+                            <span class="skill-tag">LangGraph</span>
+                            <span class="skill-tag">Prometheus</span>
+                            <span class="skill-tag">OpenAI</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-cloud"></i> DevOps & Cloud</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Kubeflow</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">CI/CD (Github Actions)</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-chart-line"></i> Monitoring</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Prometheus</span>
+                            <span class="skill-tag">Grafana</span>
+                            <span class="skill-tag">Mlflow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+
+                <!-- Project 1: AI-Powered Resume Assistant -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-comments project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>AI-Powered Resume Assistant for HR (Oct – Nov 2025)</h3>
+                        <p>
+                            Developed an AI chatbot that helped HR professionals pre-screen candidates by interacting
+                            with my resume. It classified questions, generated structured answers using GPT-5-mini, and
+                            evaluated responses with an LLM-based scoring system tracked via MLflow on AWS EC2, enabling
+                            automated and efficient candidate evaluation. The application was deployed on AWS.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">OpenAI</span>
+                            <span class="tech-badge">GPT-5-mini</span>
+                            <span class="tech-badge">LangChain</span>
+                            <span class="tech-badge">MLflow</span>
+                            <span class="tech-badge">AWS EC2</span>
+                            <span class="tech-badge">Grafana</span>
+                            <span class="tech-badge">Prometheus</span>
+                            <span class="tech-badge">Docker</span>
+                            <span class="tech-badge">Python (Flask)</span>
+                            <span class="tech-badge">HTML/CSS/JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> AWS Website</a>
+                            <a href="https://github.com/vijaytakbhate2002/portfolio-support-quick-hr-interview-bot.git"
+                                class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Medical Insurance Cost Prediction -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-heartbeat project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Medical Insurance Cost Prediction (Sept 2025)</h3>
+                        <p>
+                            Built an end-to-end system to predict insurance charges using demographic and lifestyle
+                            factors. Optimized an SVR model (R²: 0.86, MAE: 0.034) and deployed a Flask app on AWS EC2
+                            with Docker. Integrated MLflow, CI/CD, and Kubeflow to demonstrate complete ML lifecycle
+                            management.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Flask</span>
+                            <span class="tech-badge">Docker</span>
+                            <span class="tech-badge">AWS</span>
+                            <span class="tech-badge">GitHub Actions</span>
+                            <span class="tech-badge">MLflow</span>
+                            <span class="tech-badge">HTML/CSS</span>
+                            <span class="tech-badge">Kubeflow</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="http://ec2-54-234-204-18.compute-1.amazonaws.com:5000/" class="project-link"><i
+                                    class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/vijaytakbhate2002/medical-insurance-cost-prediction-SVR.git"
+                                class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Turbofan Jet Engine Lifecycle Prediction -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-plane project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Turbofan Jet Engine Lifecycle Prediction (Aug 2025)</h3>
+                        <p>
+                            Built an end-to-end system to predict the Remaining Useful Life (RUL) of jet engines using
+                            NASA CMAPSS data. Implemented a hybrid CNN + LSTM model for capturing temporal and spatial
+                            sensor patterns, integrated with an automated MLOps pipeline for data processing, training,
+                            and deployment.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Git</span>
+                            <span class="tech-badge">DVC</span>
+                            <span class="tech-badge">Dagshub</span>
+                            <span class="tech-badge">MLflow</span>
+                            <span class="tech-badge">AWS</span>
+                            <span class="tech-badge">Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/vijaytakbhate2002/nasa_turbofan_engine_life_cycle_prediction.git"
+                                class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+
+            <div class="experience-timeline">
+
+                <!-- Experience 1 -->
+                <div class="experience-item">
+                    <div class="experience-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="experience-content">
+                        <h3>Risk Analyst (MLOps & Data Engineering Focus) — InCred Financial Services</h3>
+                        <span class="experience-date">Dec 2024 – Present</span>
+                        <p>
+                            Owned policy development and deployment in the Business Rule Engine (BRE) production system,
+                            ensuring compliance and seamless integration with business processes. Designed and built a
+                            custom Python package called <strong>"Simulator"</strong> to verify implemented policies,
+                            reducing policy verification time by 30% and testing code complexity by 50%. Implemented
+                            CI/CD
+                            workflows with GitHub Actions to automate builds, run unit/integration tests, and deploy
+                            simulator
+                            + policy updates into production.
+                        </p>
+                        <div class="experience-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">GitHub Actions (CI/CD)</span>
+                            <span class="tech-badge">Databricks</span>
+                            <span class="tech-badge">Metabase</span>
+                            <span class="tech-badge">SQL</span>
+                            <span class="tech-badge">Git</span>
+                            <span class="tech-badge">Excel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="experience-item">
+                    <div class="experience-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="experience-content">
+                        <h3>Automation Engineer (Intern → Full-time) — Fox Solutions Pvt. Ltd.</h3>
+                        <span class="experience-date">Feb 2024 – Mar 2024 (Intern) | Jul 2024 – Oct 2024
+                            (Full-time)</span>
+                        <p>
+                            Started as an intern, developing and deploying automation pipelines focused on
+                            reproducibility,
+                            monitoring, and reducing manual intervention. Later transitioned to a full-time role, where
+                            I
+                            applied principles of version control, reliability engineering, and system monitoring to
+                            ensure
+                            scalable and consistent automation workflows across projects.
+                        </p>
+                        <div class="experience-tech">
+                            <span class="tech-badge">Pipeline Automation</span>
+                            <span class="tech-badge">Monitoring Systems</span>
+                            <span class="tech-badge">Version Control</span>
+                            <span class="tech-badge">PLC/SCADA Tools</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="publications" class="publications">
+        <div class="container">
+            <h2 class="section-title">Publications & Articles</h2>
+
+            <div class="publications-list">
+
+                <!-- Article 1 -->
+                <div class="publication-item">
+                    <img src="static\articles_images\precision_recall_article.png" alt="Precision Recall AUC"
+                        class="publication-thumb">
+                    <div class="publication-details">
+                        <h3>Precision, Recall, AUC: The Ultimate Guide to Classification Metrics</h3>
+                        <p>Dived deep into key performance metrics for classification models, explaining their
+                            trade-offs and real-world importance.</p>
+                        <a href="https://www.linkedin.com/pulse/precision-recall-auc-ultimate-guide-classification-metrics-takbhate-ozv5c"
+                            target="_blank" class="read-link"><i class="fab fa-linkedin"></i> Read on LinkedIn</a>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="publication-item">
+                    <img src="static\articles_images\types_of_ml_models_article.png" alt="ML Techniques Simplified"
+                        class="publication-thumb">
+                    <div class="publication-details">
+                        <h3>Supervised, Unsupervised, and Beyond: ML Techniques Simplified</h3>
+                        <p>Explained the core machine learning paradigms with simple analogies, making advanced concepts
+                            accessible to all learners.</p>
+                        <a href="https://www.linkedin.com/pulse/supervised-unsupervised-beyond-ml-techniques-vijay-takbhate-si6ic"
+                            target="_blank" class="read-link"><i class="fab fa-linkedin"></i> Read on LinkedIn</a>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="publication-item">
+                    <img src="static\articles_images\ml_lifecycle_article.png" alt="ML Lifecycle"
+                        class="publication-thumb">
+                    <div class="publication-details">
+                        <h3>Mastering the End-to-End Machine Learning Lifecycle: From Data to Deployment</h3>
+                        <p>Explored the complete ML lifecycle with real-world insights into MLOps, deployment pipelines,
+                            and continuous improvement.</p>
+                        <a href="https://www.linkedin.com/pulse/mastering-end-to-end-machine-learning-lifecycle-from-data-takbhate-ogtac"
+                            target="_blank" class="read-link"><i class="fab fa-linkedin"></i> Read on LinkedIn</a>
+                    </div>
+                </div>
+
+                <!-- Article 4 -->
+                <div class="publication-item">
+                    <img src="static\articles_images\docker_guid_article.png" alt="Docker Flask Guide"
+                        class="publication-thumb">
+                    <div class="publication-details">
+                        <h3>Comprehensive Docker Guide: Deploying a Flask Application</h3>
+                        <p>Detailed the process of containerizing and deploying a Flask app using Docker for streamlined
+                            development and scalability.</p>
+                        <a href="https://www.linkedin.com/pulse/comprehensive-docker-guide-deploying-flask-vijay-takbhate-ojxvc"
+                            target="_blank" class="read-link"><i class="fab fa-linkedin"></i> Read on LinkedIn</a>
+                    </div>
+                </div>
+
+                <!-- Article 5 -->
+                <div class="publication-item">
+                    <img src="static\articles_images\statistical_inference_article.png" alt="Statistical Inference"
+                        class="publication-thumb">
+                    <div class="publication-details">
+                        <h3>What is Statistical Inference?</h3>
+                        <p>Clarified the role of statistical inference in data-driven decision-making and its connection
+                            to modern ML approaches.</p>
+                        <a href="https://www.linkedin.com/pulse/what-statistical-inference-vijay-takbhate-liyhe"
+                            target="_blank" class="read-link"><i class="fab fa-linkedin"></i> Read on LinkedIn</a>
+                    </div>
+                </div>
+
+                <!-- Article 6 -->
+                <div class="publication-item">
+                    <img src="static\articles_images\matrix_article.png" alt="Matrix Concept" class="publication-thumb">
+                    <div class="publication-details">
+                        <h3>The Essential Yet Overlooked Concept in Machine Learning: [ The Matrix ]</h3>
+                        <p>Explored how matrix operations are the foundation of deep learning and modern ML
+                            architectures.</p>
+                        <a href="https://www.linkedin.com/pulse/essential-yet-overlooked-concept-machine-learning-matrix-takbhate-wrzqc"
+                            target="_blank" class="read-link"><i class="fab fa-linkedin"></i> Read on LinkedIn</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title">Kaggle Certifications & Badges</h2>
+
+            <div class="slider-wrapper">
+                <!-- Left Arrow -->
+                <button class="slide-btn left" id="slideLeft">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <!-- Dynamic Badge Container -->
+                <div class="certifications-slider cert-container" id="certSlider">
+                    <!-- Badges will be dynamically injected here by script.js -->
+                </div>
+
+                <!-- Right Arrow -->
+                <button class="slide-btn right" id="slideRight">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume" class="resume">
+        <div class="container">
+            <h2 class="section-title">Resume</h2>
+            <div class="resume-content">
+                <p class="resume-intro">Download my complete resume to learn more about my experience and
+                    qualifications.</p>
+                <a href="{{ url_for('static', filename='Vijay_Takbhate_Resume.pdf') }}" class="btn btn-primary"
+                    download>
+                    <i class="fas fa-download"></i> Download Resume (PDF)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="get-in-touch" class="get-in-touch">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="get-in-touch-intro">Have a project idea, question, or just want to connect? Send me a message
+                directly.</p>
+
+            <form id="get-in-touch-form" action="{{ url_for('send_message') }}" method="POST" class="get-in-touch-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Write your message here..."
+                        required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+
+            <p class="form-success" id="form-success"></p>
+            <p class="form-error" id="form-error"></p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-content">
+                <p class="contact-intro">
+                    Interested in working together? Feel free to reach out for opportunities, collaborations, or just to
+                    connect!
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:vijay.takbhate@example.com" class="contact-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>vijaytakbhate20@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/vijay-takbhate-b9231a236/" class="contact-link"
+                        target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn Profile</span>
+                    </a>
+                    <a href="https://github.com/vijaytakbhate2002" class="contact-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub Profile</span>
+                    </a>
+                    <a href="https://www.kaggle.com/vijay20213" class="contact-link" target="_blank">
+                        <i class="fab fa-kaggle"></i>
+                        <span>Kaggle Profile</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Vijay Takbhate. All rights reserved.</p>
+            <p class="footer-note">Built with Flask, HTML, CSS, and JavaScript</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+{
+  "question": "Explain a machine learning project where your model performed worse than expected. What steps did you take to improve it?",
+  "question_category": "project",
+  "response": {
+    "response_message": "In a machine learning project, my model initially performed below expectations in predicting medical insurance costs. To address this, I took the following steps:\n1. Conducted in-depth feature analysis to identify relevant features impacting predictions.\n2. Enhanced data preprocessing techniques to handle outliers and missing values more effectively.\n3. Experimented with different machine learning algorithms to find the most suitable model.\n4. Fine-tuned hyperparameters using techniques like GridSearchCV to improve model performance.\n5. Increased the size and diversity of the training data to enhance the model's generalization ability.",
+    "list_items": null,
+    "reference_links": null
+  }
+}
