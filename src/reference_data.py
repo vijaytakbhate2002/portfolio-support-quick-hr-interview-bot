@@ -63,7 +63,20 @@ Highly motivated Data Scientist and MLOps Engineer with hands-on experience in b
 
 # ----------------- PROJECTS -----------------
 project = """
-1. Medical Insurance Cost Prediction (SVR) | Sep 2025 – Present
+
+ 1. AI-Powered Portfolio & Resume Assistant for HR
+ Oct 2025
+ • Developed an AI-integrated portfolio system enabling recruiters to conduct virtual HR interviews using
+ LangChain and GPT-5-mini.
+ • Implemented a multi-LLM pipeline for dynamic question categorization, contextual response generation, and
+ validation.
+ • Deployed the application via Flask + Docker + AWS EC2, integrating MLflow for experiment tracking and
+ GitHub Actions (CI/CD) for automation.
+ • Tech Stack: Python, Flask, LangChain, GPT-5-mini, MLflow, Docker, AWS EC2
+ • Live Demo: http://ec2-54-167-49-203.compute-1.amazonaws.com:5000/
+ • GitHub: https://github.com/vijaytakbhate2002/portfolio-support-quick-hr-interview-bot.git
+
+2. Medical Insurance Cost Prediction (SVR) | Sep 2025 – Present
 • Built a predictive system to estimate medical insurance charges using demographic and lifestyle factors (age, BMI, smoking status, region, etc.).
 • Trained and optimized an SVR model with GridSearchCV, improving R² from 0.72 → 0.86 and reducing MAE from 0.099 → 0.034.
 • Developed a Flask web application (HTML/CSS UI) for user-friendly predictions, containerized with Docker, and deployed on AWS EC2.
@@ -72,7 +85,7 @@ project = """
 • Tech Stack: Python, Flask, Docker, MLflow, Kubeflow, AWS EC2, GitHub Actions, HTML/CSS
 • GitHub: github.com/vijaytakbhate2002/medical-insurance-cost-prediction-SVR
 
-2. Turbofan Jet Engine Lifecycle Prediction (CNN + LSTM) | Aug 2025 (25th–31st)
+3. Turbofan Jet Engine Lifecycle Prediction (CNN + LSTM) | Aug 2025 (25th–31st)
 • Developed Jet Engine RUL prediction using NASA CMAPSS dataset to improve predictive maintenance insights.
 • Built an end-to-end MLOps pipeline with automated data processing, training, and deployment.
 • Designed hybrid CNN + LSTM model for temporal and spatial pattern capture.
