@@ -9,7 +9,7 @@ function formatText(text) {
             return `<a href="${href}" target="_blank" style="color:#007bff; text-decoration:none;">${url}</a>`;
         }
     );
-    text = text.replace(/(\d+\.)\s/g, '<br>$1 '); 
+    text = text.replace(/(\d+\.)\s/g, '<br>$1 ');
     text = text.replace(/\n/g, '<br>');
 
     return text.trim();
@@ -33,10 +33,10 @@ function renderJSON(data, indent = 0) {
                 }
             });
             html += `</ul>`;
-        } 
+        }
         else if (typeof value === 'object' && value !== null) {
             html += `${indentSpace}<strong>${key}:</strong><br>${renderJSON(value, indent + 1)}`;
-        } 
+        }
         else {
             html += `${indentSpace}<strong>${key}:</strong> ${formatText(value)}<br>`;
         }
@@ -174,3 +174,13 @@ slideRight.addEventListener('click', () => {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+  const closeBanner = document.getElementById("close-banner");
+  const banner = document.getElementById("mobile-warning");
+
+  if (closeBanner && banner) {
+    closeBanner.addEventListener("click", function() {
+      banner.style.display = "none";
+    });
+  }
+});
