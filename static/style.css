@@ -1031,12 +1031,12 @@ body {
   }
 }
 
-/* Banner Section */
+
 .banner {
   width: 100%;
   position: relative;
   background: url('./static/profile_photos/linkedin_Banner.jpg') center/cover no-repeat;
-  height: 350px; /* Similar to LinkedIn banner height */
+  height: 280px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1046,11 +1046,11 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Profile Photo */
+
 .profile-section {
   position: absolute;
   bottom: -60px;
-  left: 60px; /* move it to the left side */
+  left: 60px; 
   display: flex;
   align-items: center;
   gap: 20px;
@@ -1085,7 +1085,7 @@ body {
   font-size: 0.95rem;
   line-height: 1.4;
 }
-
+/* 
 .banner-menu {
   display: flex;
   gap: 20px;
@@ -1094,11 +1094,11 @@ body {
   position: absolute;
   top: 20px;
   right: 40px;
-  z-index: 5; /* ensures it's above the banner image */
+  z-index: 5; 
 }
 
 .banner-menu li a {
-  color: #fff; /* make them visible on darker backgrounds */
+  color: #fff; 
   font-weight: 600;
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
@@ -1106,10 +1106,10 @@ body {
 }
 
 .banner-menu li a:hover {
-  color: #00acee; /* LinkedIn-like hover effect */
+  color: #00acee; 
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .banner {
     height: 300px;
@@ -1131,10 +1131,102 @@ body {
     gap: 15px;
     margin-top: 150px;
   }
+} */
+
+/* --- 🎨 COLOR VARIABLES FOR EASY CUSTOMIZATION --- */
+:root {
+    /* Main text color when not hovering (default: White for your dark banner) */
+    --menu-text-color: #ffffff; 
+    
+    /* Accent color for the hover effect (Default: A clean aqua blue) */
+    --menu-accent-color: #00acee; 
+    
+    /* Text color on hover (Often the same as the accent color or black) */
+    --menu-text-hover-color: var(--menu-accent-color);
+}
+
+/* Base Menu Styles (Kept your positioning) */
+.banner-menu {
+    display: flex;
+    gap: 25px; /* Slightly increased gap for better separation */
+    list-style: none;
+    padding: 10px 0; /* Adjusted padding to better fit the underline */
+    margin: 0; /* Reset default margin */
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    z-index: 5; 
+}
+
+.banner-menu li a {
+    color: var(--menu-text-color); /* Uses the customizable text color */
+    font-weight: 600;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; /* Explicit size for sharpness */
+    text-transform: uppercase; /* Sharp, professional look */
+    
+    /* Key for the Sleek Underline Effect */
+    position: relative; 
+    display: inline-block;
+    padding-bottom: 5px; /* Space for the underline */
+    transition: color 0.3s ease;
+}
+
+/* ⚡ The Sharp Underline Hover Effect ⚡ */
+.banner-menu li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px; /* Thickness of the underline */
+    background-color: var(--menu-accent-color);
+    transform: scaleX(0); /* Line starts invisible */
+    transform-origin: bottom right; /* Starts the animation from the right */
+    transition: transform 0.3s ease-out; /* Smooth animation */
+}
+
+.banner-menu li a:hover {
+    color: var(--menu-text-hover-color); /* Text color changes on hover */
+}
+
+/* Line appears on hover */
+.banner-menu li a:hover::after,
+.banner-menu li a:focus::after {
+    transform: scaleX(1); /* Line fully appears */
+    transform-origin: bottom left; /* Finishes the animation at the left */
 }
 
 
+/* --- Media Query (Kept your existing structure) --- */
+@media (max-width: 768px) {
+    /* Your existing styles for .banner, .profile-section, .profile-info h1 */
+    .banner {
+        height: 300px;
+    }
 
+    .profile-section {
+        flex-direction: column;
+        text-align: center;
+        bottom: -80px;
+    }
 
+    .profile-info h1 {
+        font-size: 1.5rem;
+    }
 
-
+    .banner-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        /* Note: Your original margin-top might need adjustment 
+           depending on your profile-section's height. */
+        margin-top: 150px; 
+        top: auto; /* Remove top positioning for center alignment */
+        right: auto; /* Remove right positioning for center alignment */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%; /* Use full width to center links */
+    }
+}

@@ -15,50 +15,70 @@
         ⚠️ This portfolio is best viewed on a Desktop or in Desktop Mode.
         <button id="close-banner">Got it</button>
     </div>
+    <section id="home">
+        <header class="banner"
+            style="background: url('{{ url_for('static', filename='profile_photos/linkedin_Banner.png') }}') center/cover no-repeat;">
+            <div class="banner-container">
+                <div class="banner-image"></div>
 
-    <header class="banner"
-        style="background: url('{{ url_for('static', filename='profile_photos/linkedin_Banner.jpg') }}') center/cover no-repeat;">
-        <div class="banner-container">
-            <div class="banner-image"></div>
-
-            <div class="profile-section">
-                <img src="{{ url_for('static', filename='profile_photos/profile_pic.jpg') }}" alt="Profile Photo"
-                    class="profile-photo" />
-                <div class="profile-info">
-                    <h1>Vijay Takbhate</h1>
-                    <p>
-                        Building intelligent systems with Machine Learning, automating ML workflows with MLOps, and
-                        creating production-ready AI solutions. With 1.5 years of experience as an Automation Engineer
-                        and Risk Analyst, I’m passionate about bringing AI from research to real-world impact.
-                    </p>
+                <div class="profile-section">
+                    <img src="{{ url_for('static', filename='profile_photos/profile_pic.jpg') }}" alt="Profile Photo"
+                        class="profile-photo" />
+                    <div class="profile-info">
+                        <h1 class="hero-title">Hi, I'm <span class="highlight">Vijay Takbhate</span></h1>
+                        <p class="hero-subtitle">AI/ML Engineer | MLOps Specialist | LLMOps Enthusiast</p>
+                        <p>
+                            Building intelligent systems with Machine Learning, automating ML workflows with MLOps, and
+                            creating production-ready AI solutions. With 1.5 years of experience as an Automation
+                            Engineer
+                            and Risk Analyst, I’m passionate about bringing AI from research to real-world impact.
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <ul class="banner-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#get-in-touch">Get-In-Touch</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </header>
+                <ul class="banner-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#get-in-touch">Get-In-Touch</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </header>
+    </section>
 
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">Hi, I'm <span class="highlight">Vijay Takbhate</span></h1>
-                <p class="hero-subtitle">AI/ML Engineer | MLOps Specialist | LLMOps Enthusiast</p>
-                <p class="hero-description">
-                    Building intelligent systems with Machine Learning, automating ML workflows with MLOps, and creating
-                    production-ready AI solutions. With 1.5 years of experience as an Automation Engineer and Risk
-                    Analyst, I’m passionate about bringing AI from research to real-world impact.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="#resume" class="btn btn-secondary">Download Resume</a>
+                <div class="experience-item">
+                    <div class="experience-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="experience-content">
+                        <h3>Risk Analyst (MLOps & Data Engineering Focus) — InCred Financial Services</h3>
+                        <span class="experience-date">Dec 2024 – Present</span>
+                        <p>
+                            Owned policy development and deployment in the Business Rule Engine (BRE) production system,
+                            ensuring compliance and seamless integration with business processes. Designed and built a
+                            custom Python package called <strong>"Simulator"</strong> to verify implemented policies,
+                            reducing policy verification time by 30% and testing code complexity by 50%. Implemented
+                            CI/CD
+                            workflows with GitHub Actions to automate builds, run unit/integration tests, and deploy
+                            simulator
+                            + policy updates into production.
+                        </p>
+                        <div class="experience-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">GitHub Actions (CI/CD)</span>
+                            <span class="tech-badge">Databricks</span>
+                            <span class="tech-badge">Metabase</span>
+                            <span class="tech-badge">SQL</span>
+                            <span class="tech-badge">Git</span>
+                            <span class="tech-badge">Excel</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
