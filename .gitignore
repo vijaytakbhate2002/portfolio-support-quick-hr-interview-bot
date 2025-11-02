@@ -38,3 +38,4 @@ instance/
 Thumbs.db
 logs.log
 credentials
+.pem

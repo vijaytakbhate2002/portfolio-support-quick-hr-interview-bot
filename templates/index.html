@@ -16,19 +16,35 @@
         <button id="close-banner">Got it</button>
     </div>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            {# <div class="logo">AI & MLOps Portfolio</div>#}
-            <ul class="nav-menu">
+    <header class="banner"
+        style="background: url('{{ url_for('static', filename='profile_photos/linkedin_Banner.jpg') }}') center/cover no-repeat;">
+        <div class="banner-container">
+            <div class="banner-image"></div>
+
+            <div class="profile-section">
+                <img src="{{ url_for('static', filename='profile_photos/profile_pic.jpg') }}" alt="Profile Photo"
+                    class="profile-photo" />
+                <div class="profile-info">
+                    <h1>Vijay Takbhate</h1>
+                    <p>
+                        Building intelligent systems with Machine Learning, automating ML workflows with MLOps, and
+                        creating production-ready AI solutions. With 1.5 years of experience as an Automation Engineer
+                        and Risk Analyst, I’m passionate about bringing AI from research to real-world impact.
+                    </p>
+                </div>
+            </div>
+
+            <ul class="banner-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#resume">Resume</a></li>
                 <li><a href="#get-in-touch">Get-In-Touch</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
-    </nav>
+    </header>
 
     <section id="home" class="hero">
         <div class="hero-container">
@@ -36,9 +52,9 @@
                 <h1 class="hero-title">Hi, I'm <span class="highlight">Vijay Takbhate</span></h1>
                 <p class="hero-subtitle">AI/ML Engineer | MLOps Specialist | LLMOps Enthusiast</p>
                 <p class="hero-description">
-                    Building intelligent systems with Machine Learning, automating ML workflows with MLOps,
-                    and creating production-ready AI solutions. Passionate about bringing AI from research to real-world
-                    impact.
+                    Building intelligent systems with Machine Learning, automating ML workflows with MLOps, and creating
+                    production-ready AI solutions. With 1.5 years of experience as an Automation Engineer and Risk
+                    Analyst, I’m passionate about bringing AI from research to real-world impact.
                 </p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">View Projects</a>

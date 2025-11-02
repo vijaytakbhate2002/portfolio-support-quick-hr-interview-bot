@@ -1031,3 +1031,110 @@ body {
   }
 }
 
+/* Banner Section */
+.banner {
+  width: 100%;
+  position: relative;
+  background: url('./static/profile_photos/linkedin_Banner.jpg') center/cover no-repeat;
+  height: 350px; /* Similar to LinkedIn banner height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Profile Photo */
+.profile-section {
+  position: absolute;
+  bottom: -60px;
+  left: 60px; /* move it to the left side */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+  padding: 15px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  z-index: 3; /* ensures it appears above banner */
+}
+
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  object-fit: cover;
+}
+
+.profile-info {
+  max-width: 700px;
+  color: #333;
+}
+
+.profile-info h1 {
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.profile-info p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.banner-menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 10px 20px;
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  z-index: 5; /* ensures it's above the banner image */
+}
+
+.banner-menu li a {
+  color: #fff; /* make them visible on darker backgrounds */
+  font-weight: 600;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.banner-menu li a:hover {
+  color: #00acee; /* LinkedIn-like hover effect */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .banner {
+    height: 300px;
+  }
+
+  .profile-section {
+    flex-direction: column;
+    text-align: center;
+    bottom: -80px;
+  }
+
+  .profile-info h1 {
+    font-size: 1.5rem;
+  }
+
+  .banner-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 150px;
+  }
+}
+
+
+
+
+
+
