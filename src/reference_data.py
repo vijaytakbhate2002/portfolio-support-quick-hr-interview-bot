@@ -49,6 +49,114 @@ Languages: English, Marathi, Hindi.
 
 # Question Category wise Resume
 # ----------------- PERSONAL -----------------
+# personal = """
+# Name: Vijay Dipak Takbhate
+# Email: vijaytakbhate20@gmail.com
+# Phone: +91-8767363681
+# GitHub: github.com/vijaytakbhate2002
+# LinkedIn: linkedin.com/in/vijay-takbhate-b9231a236
+# Kaggle: kaggle.com/vijay20213
+
+# Summary:
+# Highly motivated Data Scientist and MLOps Engineer with hands-on experience in building end-to-end machine learning pipelines, automation systems, and cloud deployments. Proficient in tools like MLflow, Docker, DVC, and GitHub Actions with a strong foundation in Python and SQL. Experienced in developing predictive models, creating scalable web applications, and implementing CI/CD pipelines for production-ready ML solutions. Passionate about applying data-driven approaches to solve real-world business problems and continuously exploring emerging technologies in AI and cloud ecosystems.
+# """
+
+# # ----------------- PROJECTS -----------------
+# project = """
+
+#  1. AI-Powered Portfolio & Resume Assistant for HR |  Oct 2025
+#  • Developed an AI-integrated portfolio system enabling recruiters to conduct virtual HR interviews using
+#  LangChain and GPT-5-mini.
+#  • Implemented a multi-LLM pipeline for dynamic question categorization, contextual response generation, and
+#  validation.
+#  • Deployed the application via Flask + Docker + AWS EC2, integrating MLflow for experiment tracking and
+#  GitHub Actions (CI/CD) for automation.
+#  • Tech Stack: Python, Flask, LangChain, GPT-5-mini, MLflow, Docker, AWS EC2
+#  • Live Demo: http://ec2-54-167-49-203.compute-1.amazonaws.com:5000/
+#  • GitHub: https://github.com/vijaytakbhate2002/portfolio-support-quick-hr-interview-bot.git
+
+# 2. Medical Insurance Cost Prediction (SVR) | Sep 2025 – Present
+# • Built a predictive system to estimate medical insurance charges using demographic and lifestyle factors (age, BMI, smoking status, region, etc.).
+# • Trained and optimized an SVR model with GridSearchCV, improving R² from 0.72 → 0.86 and reducing MAE from 0.099 → 0.034.
+# • Developed a Flask web application (HTML/CSS UI) for user-friendly predictions, containerized with Docker, and deployed on AWS EC2.
+# • Implemented MLOps best practices: MLflow tracking, CI/CD with GitHub Actions, automated pipelines with Kubeflow.
+# • Demonstrated end-to-end ML lifecycle management: data preprocessing → model training → deployment → monitoring.
+# • Tech Stack: Python, Flask, Docker, MLflow, Kubeflow, AWS EC2, GitHub Actions, HTML/CSS
+# • GitHub: github.com/vijaytakbhate2002/medical-insurance-cost-prediction-SVR
+
+# 3. Turbofan Jet Engine Lifecycle Prediction (CNN + LSTM) | Aug 2025 (25th–31st)
+# • Developed Jet Engine RUL prediction using NASA CMAPSS dataset to improve predictive maintenance insights.
+# • Built an end-to-end MLOps pipeline with automated data processing, training, and deployment.
+# • Designed hybrid CNN + LSTM model for temporal and spatial pattern capture.
+# • Tech Stack: Git, DVC, Dagshub, MLflow, AWS, Docker
+# • GitHub: github.com/vijaytakbhate2002/nasa-turbofan-engine-lifecycle-prediction
+# """
+
+# # ----------------- EXPERIENCE -----------------
+# experience = """
+# InCred Financial Services | Dec 2024 – Present
+# Role: Risk Analyst (MLOps & Data Engineering Focus) | Mumbai, Maharashtra
+# • Owned policy development and deployment in Business Rule Engine (BRE) systems.
+# • Designed custom Python package “Simulator” reducing policy verification time by 30% and testing complexity by 50%.
+# • Implemented CI/CD with GitHub Actions to automate builds, run tests, and deploy updates.
+# • Skills: Python, GitHub Actions, Databricks, Metabase, SQL, Git, Excel
+
+# Fox Solutions Pvt. Ltd. | Feb 2024 – Oct 2024
+# Role: Automation Engineer (Intern + Full-time) | Pune & Nashik, Maharashtra
+# • Developed and deployed automation pipelines focusing on reproducibility and monitoring.
+# • Applied version control and reliability engineering for scalable automation workflows.
+# • Skills: Pipeline Automation, Monitoring Systems, Version Control, PLC/SCADA Tools
+# """
+
+# # ----------------- EDUCATION -----------------
+# education = """
+# SVERI’s College of Engineering, Pandharpur, Maharashtra
+# Bachelor of Technology in Electronics and Telecommunication — Graduated: May 2024
+# • Aggregate: 81.71%
+
+# SVERI’s College of Engineering, Pandharpur, Maharashtra
+# Diploma in Electronics and Telecommunication — Graduated: May 2021
+# • Aggregate: 91.73%
+# """
+
+# # ----------------- SOFT SKILLS -----------------
+# soft_skills = """
+# Critical Thinking
+# Intellectual Rigor
+# Problem Solving
+# Understanding Business Needs
+# """
+
+# # ----------------- OTHERS (RESUME TEMPLATE) -----------------
+
+# others = """
+# Vijay Dipak Takbhate — Data Scientist | MLOps | Data Engineering
+# 📧 vijaytakbhate20@gmail.com | 📞 +91-8767363681
+# 🔗 GitHub: github.com/vijaytakbhate2002 | LinkedIn: linkedin.com/in/vijay-takbhate-b9231a236
+
+# A passionate Data Scientist and MLOps Engineer skilled in building end-to-end ML pipelines, automation systems, and cloud deployments. Strong background in Python, SQL, and modern MLOps tools like MLflow, Docker, DVC, and GitHub Actions. Experienced in deploying Flask-based ML apps on AWS and automating workflows using CI/CD.
+
+# 🧠 Key Projects:
+# • Medical Insurance Cost Prediction — SVR-based Flask app with Docker & MLflow (R²: 0.86).
+# • Turbofan Jet Engine Lifecycle Prediction — CNN + LSTM model for RUL estimation with NASA dataset.
+
+# 💼 Experience:
+# • Risk Analyst (InCred Financial Services) — Automated policy deployment & CI/CD workflows; built “Simulator” package reducing testing time by 30%.
+# • Automation Engineer (Fox Solutions) — Developed and monitored scalable automation pipelines.
+
+# 🎓 Education:
+# B.Tech in Electronics & Telecommunication — 81.71%, SVERI’s College of Engineering (2024).
+# Diploma in E&TC — 91.73%, SVERI’s College of Engineering (2021).
+
+# 🛠️ Technical Skills:
+# Python | SQL | MLflow | Docker | DVC | Kubeflow | AWS | Flask | GitHub Actions | Databricks
+
+# 🌟 Soft Skills:
+# Critical Thinking | Problem Solving | Business Understanding | Intellectual Rigor
+
+# """
+
+# ----------------- PERSONAL -----------------
 personal = """
 Name: Vijay Dipak Takbhate
 Email: vijaytakbhate20@gmail.com
@@ -58,54 +166,54 @@ LinkedIn: linkedin.com/in/vijay-takbhate-b9231a236
 Kaggle: kaggle.com/vijay20213
 
 Summary:
-Highly motivated Data Scientist and MLOps Engineer with hands-on experience in building end-to-end machine learning pipelines, automation systems, and cloud deployments. Proficient in tools like MLflow, Docker, DVC, and GitHub Actions with a strong foundation in Python and SQL. Experienced in developing predictive models, creating scalable web applications, and implementing CI/CD pipelines for production-ready ML solutions. Passionate about applying data-driven approaches to solve real-world business problems and continuously exploring emerging technologies in AI and cloud ecosystems.
+MLOps & AI/ML Engineering professional with 1.5+ years of experience building and deploying scalable machine learning systems, cloud-based AI solutions, and automation pipelines. Skilled in LLM integration (GPT-5-mini, LangChain), MLflow experiment tracking, CI/CD automation, and containerized deployments using AWS EC2 and Docker. Adept at developing predictive models, optimizing data workflows, and creating reproducible MLOps ecosystems that strengthen operational efficiency and system reliability. Strong ability to translate business needs into production-ready ML systems aligned with compliance and real-world impact.
 """
 
 # ----------------- PROJECTS -----------------
 project = """
+1. Market Price Realtime Analysis & Prediction Dashboard App | Nov 2025 – Present
+• Designed an AI-driven dashboard delivering real-time market prices for 374 agricultural commodities using official APIs.
+• Processed 75M+ historical records (2001–2025) using RAM-efficient ETL pipelines and AWS S3 batch workflows.
+• Developed ML models to forecast commodity price trends for farmers, policymakers, and supply chain stakeholders.
+• Built a React frontend and Flask/FastAPI backend with containerized deployment on AWS EC2 using Docker.
+• Implemented Kubeflow pipelines for automated ML workflows and GitHub Actions for CI/CD and model orchestration.
+• Tech Stack: Python, React, Flask, FastAPI, Docker, AWS EC2/S3, Kubeflow, PostgreSQL, Pandas, scikit-learn, TensorFlow, LangChain.
 
- 1. AI-Powered Portfolio & Resume Assistant for HR |  Oct 2025
- • Developed an AI-integrated portfolio system enabling recruiters to conduct virtual HR interviews using
- LangChain and GPT-5-mini.
- • Implemented a multi-LLM pipeline for dynamic question categorization, contextual response generation, and
- validation.
- • Deployed the application via Flask + Docker + AWS EC2, integrating MLflow for experiment tracking and
- GitHub Actions (CI/CD) for automation.
- • Tech Stack: Python, Flask, LangChain, GPT-5-mini, MLflow, Docker, AWS EC2
- • Live Demo: http://ec2-54-167-49-203.compute-1.amazonaws.com:5000/
- • GitHub: https://github.com/vijaytakbhate2002/portfolio-support-quick-hr-interview-bot.git
+2. AI-Powered Portfolio & Resume Assistant for HR | Oct 2025
+• Built a virtual HR interview system powered by multi-LLM orchestration (LangChain + GPT-5-mini).
+• Automated dynamic question generation, response validation, and skill classification.
+• Integrated MLflow for experiment tracking and GitHub Actions for CI/CD automation.
+• Deployed using Flask + Docker on AWS EC2.
+• Tech Stack: Python, Flask, LangChain, GPT-5-mini, MLflow, Docker, AWS EC2.
 
-2. Medical Insurance Cost Prediction (SVR) | Sep 2025 – Present
-• Built a predictive system to estimate medical insurance charges using demographic and lifestyle factors (age, BMI, smoking status, region, etc.).
-• Trained and optimized an SVR model with GridSearchCV, improving R² from 0.72 → 0.86 and reducing MAE from 0.099 → 0.034.
-• Developed a Flask web application (HTML/CSS UI) for user-friendly predictions, containerized with Docker, and deployed on AWS EC2.
-• Implemented MLOps best practices: MLflow tracking, CI/CD with GitHub Actions, automated pipelines with Kubeflow.
-• Demonstrated end-to-end ML lifecycle management: data preprocessing → model training → deployment → monitoring.
-• Tech Stack: Python, Flask, Docker, MLflow, Kubeflow, AWS EC2, GitHub Actions, HTML/CSS
-• GitHub: github.com/vijaytakbhate2002/medical-insurance-cost-prediction-SVR
+3. Medical Insurance Cost Prediction (SVR) | Sep 2025
+• Developed an SVR model achieving R² = 0.86 and MAE = 0.034 using demographic and lifestyle features.
+• Built a Flask web app, containerized with Docker, and deployed on AWS EC2.
+• Integrated MLflow for experiment tracking and Kubeflow for automated pipeline management.
+• Tech Stack: Python, Flask, Docker, MLflow, Kubeflow, AWS EC2.
 
-3. Turbofan Jet Engine Lifecycle Prediction (CNN + LSTM) | Aug 2025 (25th–31st)
-• Developed Jet Engine RUL prediction using NASA CMAPSS dataset to improve predictive maintenance insights.
-• Built an end-to-end MLOps pipeline with automated data processing, training, and deployment.
-• Designed hybrid CNN + LSTM model for temporal and spatial pattern capture.
-• Tech Stack: Git, DVC, Dagshub, MLflow, AWS, Docker
-• GitHub: github.com/vijaytakbhate2002/nasa-turbofan-engine-lifecycle-prediction
+4. Turbofan Jet Engine Lifecycle Prediction (CNN + LSTM) | Aug 2025
+• Predicted Remaining Useful Life (RUL) using NASA CMAPSS dataset for predictive maintenance.
+• Designed hybrid CNN + LSTM architecture to capture spatial + temporal engine telemetry patterns.
+• Implemented automated MLOps workflow using DVC, Dagshub, MLflow, and Docker.
+• Tech Stack: Git, DVC, Dagshub, MLflow, AWS, Docker.
 """
 
 # ----------------- EXPERIENCE -----------------
 experience = """
 InCred Financial Services | Dec 2024 – Present
 Role: Risk Analyst (MLOps & Data Engineering Focus) | Mumbai, Maharashtra
-• Owned policy development and deployment in Business Rule Engine (BRE) systems.
-• Designed custom Python package “Simulator” reducing policy verification time by 30% and testing complexity by 50%.
-• Implemented CI/CD with GitHub Actions to automate builds, run tests, and deploy updates.
-• Skills: Python, GitHub Actions, Databricks, Metabase, SQL, Git, Excel
+• Leading policy design and deployment in Business Rule Engine (BRE), supporting regulatory compliance and business risk workflows.
+• Developed a custom Python package “Simulator” for policy validation, reducing verification time by 30% and complexity by 50%.
+• Implemented CI/CD pipelines via GitHub Actions for automated builds, testing, and production deployment.
+• Optimized workflows using Databricks, SQL, Git, Metabase, and Excel to enhance operational efficiency.
+• Collaborate cross-functionally to deliver scalable, reliable, and reproducible MLOps solutions.
 
 Fox Solutions Pvt. Ltd. | Feb 2024 – Oct 2024
-Role: Automation Engineer (Intern + Full-time) | Pune & Nashik, Maharashtra
-• Developed and deployed automation pipelines focusing on reproducibility and monitoring.
-• Applied version control and reliability engineering for scalable automation workflows.
-• Skills: Pipeline Automation, Monitoring Systems, Version Control, PLC/SCADA Tools
+Role: Automation Engineer (Intern → Full-time) | Pune & Nashik, Maharashtra
+• Developed automation pipelines enhancing reproducibility, monitoring, and reducing manual intervention.
+• Improved system reliability and stability through monitoring and version control practices.
+• Integrated PLC/SCADA tools and automated workflows to streamline production operations.
 """
 
 # ----------------- EDUCATION -----------------
@@ -122,50 +230,44 @@ Diploma in Electronics and Telecommunication — Graduated: May 2021
 # ----------------- SOFT SKILLS -----------------
 soft_skills = """
 Critical Thinking
-Intellectual Rigor
 Problem Solving
-Understanding Business Needs
+Business Understanding
+Intellectual Rigor
+System Reliability Awareness
+Cross-Functional Collaboration
 """
 
 # ----------------- OTHERS (RESUME TEMPLATE) -----------------
-
 others = """
-Vijay Dipak Takbhate — Data Scientist | MLOps | Data Engineering
+Vijay Dipak Takbhate — Data Scientist | MLOps Engineer | AI/ML Engineering
 📧 vijaytakbhate20@gmail.com | 📞 +91-8767363681
 🔗 GitHub: github.com/vijaytakbhate2002 | LinkedIn: linkedin.com/in/vijay-takbhate-b9231a236
 
-A passionate Data Scientist and MLOps Engineer skilled in building end-to-end ML pipelines, automation systems, and cloud deployments. Strong background in Python, SQL, and modern MLOps tools like MLflow, Docker, DVC, and GitHub Actions. Experienced in deploying Flask-based ML apps on AWS and automating workflows using CI/CD.
+MLOps & AI/ML Engineer with experience in deploying ML pipelines, automating workflows, and containerizing applications using Docker, AWS, Kubeflow, and MLflow. Skilled in predictive modeling, LLM integration, and building robust data/ML automation systems that support scalable business operations.
 
 🧠 Key Projects:
-• Medical Insurance Cost Prediction — SVR-based Flask app with Docker & MLflow (R²: 0.86).
-• Turbofan Jet Engine Lifecycle Prediction — CNN + LSTM model for RUL estimation with NASA dataset.
+• Market Price Realtime Dashboard — AI platform for real-time commodity prices with ML forecasting.
+• AI Resume & Portfolio Assistant — Multi-LLM interview automation using LangChain + GPT-5-mini.
+• Medical Insurance Cost Prediction — SVR model (R²: 0.86) deployed with Flask + Docker + AWS.
+• Jet Engine Lifecycle Prediction — CNN + LSTM forecasting with full MLOps automation.
 
 💼 Experience:
-• Risk Analyst (InCred Financial Services) — Automated policy deployment & CI/CD workflows; built “Simulator” package reducing testing time by 30%.
-• Automation Engineer (Fox Solutions) — Developed and monitored scalable automation pipelines.
+• Risk Analyst (InCred) — Policy automation, CI/CD pipelines, Databricks workflows, Python tooling.
+• Automation Engineer (Fox Solutions) — Production automation, PLC/SCADA integration, workflow monitoring.
 
 🎓 Education:
-B.Tech in Electronics & Telecommunication — 81.71%, SVERI’s College of Engineering (2024).
-Diploma in E&TC — 91.73%, SVERI’s College of Engineering (2021).
+B.Tech in Electronics & Telecommunication — 81.71%
+Diploma in Electronics & Telecommunication — 91.73%
 
 🛠️ Technical Skills:
-Python | SQL | MLflow | Docker | DVC | Kubeflow | AWS | Flask | GitHub Actions | Databricks
+Python | SQL | Flask | MLflow | Docker | DVC | Kubeflow | AWS EC2/S3 | GitHub Actions | Databricks | Metabase | TensorFlow | scikit-learn | CI/CD | Pipeline Automation
 
 🌟 Soft Skills:
-Critical Thinking | Problem Solving | Business Understanding | Intellectual Rigor
-
+Critical Thinking | Problem Solving | Business Understanding | Intellectual Rigor | Workflow Optimization | Collaboration
 """
+
 
 
 test_questions = [
     "Explain a machine learning project where your model performed worse than expected. What steps did you take to improve it?",
 ]
-
-# test_questions = [
-#     "Explain a machine learning project where your model performed worse than expected. What steps did you take to improve it?",
-#     "How would you handle imbalanced classes in a dataset where the minority class is crucial for decision making?",
-#     "Describe a scenario where your assumptions about the data turned out wrong. How did you correct the model?",
-#     "How would you explain a complex ML model’s prediction to a non-technical stakeholder?",
-#     "You trained a neural network, and the loss decreases but accuracy remains low. What could be happening?"
-# ]
-
