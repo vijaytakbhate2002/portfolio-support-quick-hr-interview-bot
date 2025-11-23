@@ -72,9 +72,6 @@ MarkupSafe==3.0.3
 matplotlib==3.10.7
 mcp==1.16.0
 mdurl==0.1.2
-mlflow==3.5.0
-mlflow-skinny==3.5.0
-mlflow-tracing==3.5.0
 more-itertools==10.8.0
 numpy==2.3.4
 openai==2.5.0
@@ -95,7 +92,6 @@ pathable==0.4.4
 pillow==12.0.0
 pluggy==1.6.0
 protobuf==6.33.0
-pyarrow==21.0.0
 pyasn1==0.6.1
 pyasn1_modules==0.4.2
 pycparser==2.23

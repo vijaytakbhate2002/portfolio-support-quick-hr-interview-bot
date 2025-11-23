@@ -13,6 +13,7 @@ load_dotenv()
 
 sender_email = os.getenv("EMAIL_USER")
 app_password = os.getenv("APP_PASS")
+recipient_email = "takbhatevijay@gmail.com" # Hardcoded recipient as per original code
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SESSION_SECRET', 'dev-secret-key-change-in-production')
@@ -68,6 +69,17 @@ class AIAssistant:
             reference_linsk = "\n".join(llm_response.reference_links) + "\n"
         return response_message + " " + list_items + " " + reference_linsk
     
+    def summarize_conversation(self, history: str) -> str:
+        """
+        Summarizes the conversation history into 2 sentences.
+        """
+        prompt = f"Summarize the following conversation between a user and an AI assistant in exactly two sentences:\n\n{history}"
+        
+        from langchain_openai import ChatOpenAI
+        llm = ChatOpenAI(model_name=self.model_name, temperature=self.temperature)
+        response = llm.invoke(prompt)
+        return response.content
+
 assitant = AIAssistant(
     model_name=GPT_MODEL_NAME,
     temperature=TEMPERATURE,
@@ -76,6 +88,23 @@ assitant = AIAssistant(
     question_category_prompt=question_category_prompt
 )
 
+def send_email_notification(subject, body):
+    msg = MIMEMultipart()
+    msg['From'] = sender_email
+    msg['To'] = recipient_email
+    msg['Subject'] = subject
+    msg.attach(MIMEText(body, 'plain'))
+
+    try:
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login(sender_email, app_password)
+        server.sendmail(sender_email, [recipient_email], msg.as_string())
+        server.quit()
+        return True
+    except Exception as e:
+        print(f"Email error: {e}")
+        return False
 
 @app.route('/')
 def index():
@@ -121,26 +150,51 @@ def send_message():
     email = request.form['email']
     message = request.form['message']
 
-    msg = MIMEMultipart()
-    msg['From'] = sender_email
-    msg['To'] = sender_email
-    msg['Subject'] = f"Portfolio Message from {name}"
-
+    subject = f"Portfolio Message from {name}"
     body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
-    msg.attach(MIMEText(body, 'plain'))
-
-    try:
-        server = smtplib.SMTP('smtp.gmail.com', 587)
-        server.starttls()
-        server.login(sender_email, app_password)
-        server.sendmail(sender_email, ["takbhatevijay@gmail.com"], msg.as_string())
-        server.quit()
+    
+    if send_email_notification(subject, body):
         flash("Message sent successfully!", "success")
-    except Exception as e:
+    else:
         flash("Failed to send message. Please try again.", "error")
 
     return redirect(url_for('index'))
 
+@app.route("/track_download", methods=["POST"])
+def track_download():
+    """
+    Tracks resume downloads and sends an email notification.
+    """
+    try:
+        subject = "Resume Download Notification"
+        body = "Someone has downloaded your resume from the portfolio."
+        send_email_notification(subject, body)
+        return jsonify({'status': 'success'})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route("/end_chat", methods=["POST"])
+def end_chat():
+    """
+    Summarizes the conversation and sends an email.
+    """
+    try:
+        data = request.get_json()
+        history = data.get('history', '')
+        
+        if not history:
+            return jsonify({'error': 'No history provided'}), 400
+
+        summary = assitant.summarize_conversation(history)
+        
+        subject = "Portfolio Chatbot Conversation Summary"
+        body = f"Here is the summary of a recent conversation with your portfolio chatbot:\n\n{summary}"
+        
+        send_email_notification(subject, body)
+        
+        return jsonify({'status': 'success', 'summary': summary})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=False)
