@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function addMessage(content, isUser = false) {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${isUser ? 'user-message' : 'ai-message'}`;
-        messageDiv.innerHTML = isUser ? content : `<strong>AI Assistant:</strong> ${content}`;
+        messageDiv.innerHTML = isUser ? content : `<strong></strong> ${content}`;
         chatMessages.appendChild(messageDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
