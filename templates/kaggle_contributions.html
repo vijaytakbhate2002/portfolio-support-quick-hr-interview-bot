@@ -8,71 +8,100 @@
         <!-- Notebook 1 -->
         <div class="project-card">
             <div class="project-img">
-                <i class="fab fa-kaggle"></i>
+                <img src="{{ url_for('static', filename='kaggle_notebooks/healthy_fast_food.jpg') }}"
+                    alt="Healthy Fast Foods">
             </div>
             <div class="project-content">
-                <h3 class="project-title">Notebook Title 1</h3>
+                <h3 class="project-title">Healthy fast foods (KMeans and visualization)</h3>
                 <p class="project-desc">
-                    A brief description of this viral notebook. Explain the problem solved, the dataset used, and the
-                    key insights or models developed.
+                    Built a model using unsupervised learning to categorize fast food items by nutritional values, and
+                    then, by applying healthy thresholds for each group, ranked the fast food categories from worst to
+                    best.
                 </p>
                 <div class="project-tech">
                     <span class="tag">EDA</span>
                     <span class="tag">Feature Engineering</span>
-                    <span class="tag">XGBoost</span>
+                    <span class="tag">KMeans</span>
+                    <span class="tag">Visualization</span>
+                </div>
+                <div class="kaggle-stats"
+                    style="display: flex; gap: 1rem; margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;">
+                    <span><i class="fas fa-eye"></i> 5.3k</span>
+                    <span><i class="fas fa-thumbs-up"></i> 76</span>
                 </div>
                 <div class="project-links">
-                    <a href="#" class="link-btn" target="_blank"><i class="fas fa-external-link-alt"></i> View
+                    <a href="https://www.kaggle.com/code/vijay20213/healthy-fast-foods-kmeans-and-visualization"
+                        class="link-btn" target="_blank"><i class="fas fa-external-link-alt"></i> View
                         Notebook</a>
                 </div>
             </div>
         </div>
+
 
         <!-- Notebook 2 -->
         <div class="project-card">
             <div class="project-img">
-                <i class="fab fa-kaggle"></i>
+                <img src="{{ url_for('static', filename='kaggle_notebooks/stress_identification_with_nlp.jpg') }}"
+                    alt="Stress Identification">
             </div>
             <div class="project-content">
-                <h3 class="project-title">Notebook Title 2</h3>
+                <h3 class="project-title">Stress Identification with NLP</h3>
                 <p class="project-desc">
-                    Description for the second notebook. Highlight the unique approach or advanced visualization
-                    techniques
-                    demonstrated in this kernel.
-                </p>
+                    Trained a Naive Bayes model for stress identification from input text, which helps an emergency
+                    messaging system alert others if stress is detected in a user’s message</p>
                 <div class="project-tech">
-                    <span class="tag">Deep Learning</span>
-                    <span class="tag">PyTorch</span>
-                    <span class="tag">Computer Vision</span>
+                    <span class="tag">NLP</span>
+                    <span class="tag">Naive Bayes</span>
+                    <span class="tag">Imergency Messaging System</span>
+                </div>
+                <div class="kaggle-stats"
+                    style="display: flex; gap: 1rem; margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;">
+                    <span><i class="fas fa-eye"></i> 3k</span>
+                    <span><i class="fas fa-thumbs-up"></i> 65</span>
                 </div>
                 <div class="project-links">
-                    <a href="#" class="link-btn" target="_blank"><i class="fas fa-external-link-alt"></i> View
+                    <a href="https://www.kaggle.com/code/vijay20213/stress-identification-nlp-with-best-prediction"
+                        class="link-btn" target="_blank"><i class="fas fa-external-link-alt"></i> View
                         Notebook</a>
                 </div>
             </div>
         </div>
 
+
         <!-- Notebook 3 -->
         <div class="project-card">
             <div class="project-img">
-                <i class="fab fa-kaggle"></i>
+                <img src="{{ url_for('static', filename='kaggle_notebooks/cancer_prediction.jpg') }}"
+                    alt="Cancer Prediction">
             </div>
             <div class="project-content">
-                <h3 class="project-title">Notebook Title 3</h3>
+                <h3 class="project-title">Cancer prediction with 98% accuracy</h3>
                 <p class="project-desc">
-                    Details about the third notebook. Mention any medals or high rankings this notebook achieved in
-                    competitions or community votes.
+                    Trained a Random Forest classifier using the described spot as input features.
                 </p>
                 <div class="project-tech">
-                    <span class="tag">NLP</span>
-                    <span class="tag">Transformers</span>
-                    <span class="tag">Hugging Face</span>
+                    <span class="tag">RandomForestClassifier</span>
+                    <span class="tag">Analysis</span>
+                    <span class="tag">Feature Engineering</span>
+                </div>
+                <div class="kaggle-stats"
+                    style="display: flex; gap: 1rem; margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;">
+                    <span><i class="fas fa-eye"></i> 1.7K</span>
+                    <span><i class="fas fa-thumbs-up"></i> 42</span>
+
                 </div>
                 <div class="project-links">
-                    <a href="#" class="link-btn" target="_blank"><i class="fas fa-external-link-alt"></i> View
+                    <a href="https://www.kaggle.com/code/vijay20213/cancer-prediction-with-98-accuracy" class="link-btn"
+                        target="_blank"><i class="fas fa-external-link-alt"></i> View
                         Notebook</a>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="section-footer" style="text-align: center; margin-top: 3rem;">
+        <a href="https://www.kaggle.com/vijay20213" target="_blank" class="btn btn-primary">
+            View Full Profile <i class="fas fa-arrow-right"></i>
+        </a>
     </div>
 </section>
