@@ -1,0 +1,47 @@
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <span class="hero-badge">Available for Hire</span>
+            <h1 class="hero-title">Hi, I'm <br><span>Vijay Takbhate</span></h1>
+            <p class="hero-subtitle">AI/ML Engineer & MLOps Specialist</p>
+            <p class="hero-description">
+                Building intelligent systems with Machine Learning, automating workflows with MLOps, and creating
+                production-ready AI solutions. Passionate about bringing AI from research to real-world impact.
+            </p>
+            <div class="btn-group">
+                <a href="#projects" class="btn btn-primary">View Projects <i class="fas fa-arrow-right"></i></a>
+                <a href="{{ url_for('static', filename='Vijay_Takbhate_Resume.pdf') }}" class="btn btn-secondary"
+                    download onclick="downloadResume(event)">Download Resume <i class="fas fa-download"></i></a>
+            </div>
+        </div>
+
+        <!-- Chatbot Interface -->
+        <div class="chatbot-card">
+            <div class="chatbot-header">
+                <div class="chatbot-title">
+                    <i class="fas fa-robot"></i>
+                    <span>AI HR Assistant</span>
+                </div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <button id="endChatBtn" class="btn-secondary"
+                        style="padding: 0.3rem 0.8rem; font-size: 0.8rem; border-radius: 20px; color: white; border-color: rgba(255,255,255,0.2);">End
+                        Interview</button>
+                    <div class="status-dot"></div>
+                </div>
+            </div>
+            <div class="chatbot-messages" id="chatMessages">
+                <div class="message ai-message">
+                    <strong></strong> Hello! I'm Vijay's AI assistant. Ask me about his skills,
+                    projects, or experience to see if he's a good fit for your team.
+                </div>
+            </div>
+            <div class="chatbot-input-area">
+                <input type="text" id="userInput" class="chatbot-input" placeholder="Ask anything...">
+                <button id="sendBtn" class="send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

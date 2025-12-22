@@ -39,3 +39,4 @@ Thumbs.db
 logs.log
 credentials
 .pem
+temp.py
