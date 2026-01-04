@@ -19,7 +19,7 @@ It allows HR professionals to **interview me virtually** — the AI can understa
 The system is designed to **save recruiters’ time** by conducting quick **pre-screening interviews**, analyzing answers for accuracy and relevance, and providing metrics for each response.
 
 🔗 **Live Demo:**  
-👉 [http://ec2-54-167-49-203.compute-1.amazonaws.com:5000/](http://ec2-54-167-49-203.compute-1.amazonaws.com:5000/)
+👉 [http://ec2-52-21-78-219.compute-1.amazonaws.com:5000/](http://ec2-52-21-78-219.compute-1.amazonaws.com:5000/)
 
 ---
 
