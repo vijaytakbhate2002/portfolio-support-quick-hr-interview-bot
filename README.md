@@ -11,10 +11,11 @@
 
 ---
 
+
 ## 🚀 Project Overview
 
 This project is an **AI-powered interactive portfolio** integrated with a **smart HR assistant**.  
-It allows HR professionals to **interview me virtually** — the AI can understand, categorize, and answer HR questions directly from my resume using **LangChain + GPT-5-mini**.
+It allows HR professionals to **interview me virtually** — the AI can understand, categorize, and answer HR questions directly from my resume using **`rag_assisted_bot`** (powered by **LangChain + GPT-5-mini**).
 
 The system is designed to **save recruiters’ time** by conducting quick **pre-screening interviews**, analyzing answers for accuracy and relevance, and providing metrics for each response.
 
@@ -25,21 +26,18 @@ The system is designed to **save recruiters’ time** by conducting quick **pre-
 
 ## 🧠 Workflow & Architecture
 
-1. **Question Categorization (LLM 1)**  
-   - The first LLM predicts which part of the resume is relevant:  
-     ```
-     ["project", "experience", "personal", "education", "soft_skills", "others"]
-     ```
+1. **RAG Assistant Initialization**
+   - The `rag_assisted_bot` package handles the LLM and RAG logic.
+   - It scrapes GitHub data, builds a **Vector Database** (ChromaDB), and sets up the **Assistant**.
 
-2. **Context-Aware Answering (LLM 2)**  
-   - Based on the predicted category, the assistant extracts **only that section** of the resume and combines it with the HR’s question.
-   - This **smart prompting** reduces token usage and cost while maintaining contextually correct answers.
+2. **Context-Aware Answering**
+   - When a user asks a question, the Assistant retrieves relevant chunks from the knowledge base (Vector DB).
+   - It combines the question with the retrieved context and prompts **GPT-5-mini**.
+   - The response includes the answer, reference links, and a confidence score.
 
-3. **Response Validation (LLM 3)**  
-   - A third LLM validates each generated answer using **MLflow** metrics:
-     - ✅ **Relevancy**
-     - 🛡 **Faithfulness**
-     - 🎯 **Correctness**
+3. **Response Validation & Structure**
+   - The system validates the answer ensures it fits the expected structure (message, links, confidence).
+   - It categorizes the question (e.g., project, experience, education).
 
 4. **Tracking & Monitoring**
    - All metrics are logged in **MLflow**, hosted on an **AWS EC2 instance** for live tracking and analytics.
@@ -58,7 +56,7 @@ The system is designed to **save recruiters’ time** by conducting quick **pre-
 
 | Layer | Technologies Used |
 |-------|-------------------|
-| 💬 AI Assistant | LangChain, GPT-5-mini |
+| 💬 AI Assistant | **rag_assisted_bot**, LangChain, GPT-5-mini |
 | 🧠 Backend | Python, Flask |
 | 📈 Tracking | MLflow, AWS EC2 |
 | 🧰 CI/CD | GitHub Actions |
