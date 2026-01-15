@@ -122,7 +122,33 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (data.error) {
                     addMessage('Sorry, something went wrong. Please try again.');
                 } else {
-                    addMessage(renderJSON(data));
+                    // Handle structured RAG response
+                    let content = '';
+
+                    if (data.response_message) {
+                        content += formatText(data.response_message);
+                    } else if (data['AI Assistant']) {
+                        // Fallback for backward compatibility if needed, or if error structure differs
+                        content += renderJSON(data);
+                    }
+
+                    // Append Reference Links if available
+                    if (data.reference_links && Array.isArray(data.reference_links) && data.reference_links.length > 0) {
+                        content += '<div class="reference-section" style="margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 5px;">';
+                        content += '<strong style="display:block; margin-bottom: 5px; font-size: 0.9em; color: #a0a0a0;">References:</strong>';
+                        content += '<ul style="padding-left: 20px; list-style-type: disc; font-size: 0.85em;">';
+                        data.reference_links.forEach(link => {
+                            const href = link.startsWith('http') ? link : `https://${link}`;
+                            // Try to make a readable label from the URL if possible, or just show the URL
+                            let label = link.split('/').pop() || link;
+                            if (label.length > 30) label = label.substring(0, 27) + '...';
+
+                            content += `<li style="margin-bottom: 3px;"><a href="${href}" target="_blank" style="color:#00f2ea; text-decoration:none;">${link}</a></li>`;
+                        });
+                        content += '</ul></div>';
+                    }
+
+                    addMessage(content);
                 }
             })
             .catch(error => {
