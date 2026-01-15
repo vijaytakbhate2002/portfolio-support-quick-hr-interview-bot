@@ -183,7 +183,7 @@ python-dateutil==2.9.0.post0
 python-dotenv==1.2.1
 python-multipart==0.0.20
 pytz==2025.2
-pywin32==311
+pywin32==311; sys_platform == "win32"
 PyYAML==6.0.3
 pyzmq==27.1.0
 rag-assisted-chatbot @ git+https://github.com/vijaytakbhate2002/rag_assisted_chatbot_package.git@93e68b875ea9568aff9eda61f1f628c49cceea1c
