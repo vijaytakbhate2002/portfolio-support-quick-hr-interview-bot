@@ -71,26 +71,12 @@ def chat():
         # Extract response model
         response_model = ai_result['response']
         
-        # Construct the response for the frontend
-        # output structure of llm class InterViewResponse(BaseModel):
-        # response_message: str
-        # reference_links: List[str]
-        # confidence_score: float
-        # follow_up_question: str
-        # additional_resources: List[str]
-        
         response_data = {
             'response_message': response_model.response_message,
             'reference_links': response_model.reference_links,
-            'confidence_score': response_model.confidence_score,
-            'follow_up_question': response_model.follow_up_question,
-            'additional_resources': response_model.additional_resources,
             'question_category': ai_result.get('question_category', 'unknown')
         }
 
-        # Adapt to what frontend expects, or send the structured object
-        # Frontend originally expected: {'AI Assistant': formatted_string}
-        # We will change frontend to handle this object.
         return jsonify(response_data)
     
     except Exception as e:
@@ -149,12 +135,6 @@ def end_chat():
         
         if not history:
             return jsonify({'error': 'No history provided'}), 400
-
-        # Create a basic summary using the assistant (if it has a summary method) or just send history
-        # The previous code used assistant.summarize_conversation(history)
-        # Checking if new assistant has this capability. If not, we might need to implement it or use a raw LLM call.
-        # For now, we will just send the history as the summary or a placeholder message until we verify if Assistant has summary.
-        # Assuming for now we just email the history.
         
         summary = f"Conversation History:\n{history}"
         
@@ -168,5 +148,5 @@ def end_chat():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    app.run(host='0.0.0.0', port=5000, debug=True)
 
