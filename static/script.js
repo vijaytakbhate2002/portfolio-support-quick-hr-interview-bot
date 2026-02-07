@@ -47,6 +47,32 @@ document.addEventListener('DOMContentLoaded', function () {
     const userInput = document.getElementById('userInput');
     const sendBtn = document.getElementById('sendBtn');
 
+    // Modal Elements
+    const chatbotModal = document.getElementById('chatbotModal');
+    const closeChatBtn = document.getElementById('closeChatBtn');
+    const chatFab = document.getElementById('chatFab');
+    const heroChatBtn = document.getElementById('heroChatBtn');
+
+    // Open Modal
+    function openModal() {
+        if (chatbotModal) chatbotModal.style.display = "flex";
+    }
+
+    // Close Modal
+    function closeModal() {
+        if (chatbotModal) chatbotModal.style.display = "none";
+    }
+
+    if (chatFab) chatFab.addEventListener('click', openModal);
+    if (heroChatBtn) heroChatBtn.addEventListener('click', openModal);
+    if (closeChatBtn) closeChatBtn.addEventListener('click', closeModal);
+
+    // Close on outside click
+    window.addEventListener('click', (e) => {
+        if (e.target === chatbotModal) closeModal();
+    });
+
+
     function formatText(text) {
         if (typeof text !== 'string') return text;
         text = text.replace(
@@ -182,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     // --- End Chat Logic ---
-    const endChatBtn = document.getElementById('endChatBtn');
+    const endChatBtn = document.getElementById('endChatBtnModal');
     if (endChatBtn) {
         endChatBtn.addEventListener('click', () => {
             if (confirm("Are you sure you want to end the interview? I'll send a summary to Vijay.")) {
