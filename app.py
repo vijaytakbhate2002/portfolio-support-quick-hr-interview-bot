@@ -1,9 +1,3 @@
-from flask import Flask, render_template, request, jsonify, send_from_directory, redirect, flash, url_for
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-from src.config import GPT_MODEL_NAME
-from rag_assisted_bot import Assistant
 from dotenv import load_dotenv
 import os
 
@@ -12,6 +6,14 @@ load_dotenv()
 sender_email = os.getenv("EMAIL_USER")
 app_password = os.getenv("APP_PASS")
 recipient_email = "takbhatevijay@gmail.com" # Hardcoded recipient as per original code
+TOKEN_GITHUB = os.getenv("TOKEN_GITHUB")
+
+from flask import Flask, render_template, request, jsonify, send_from_directory, redirect, flash, url_for
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from src.config import GPT_MODEL_NAME
+from rag_assisted_bot import Assistant
 
 # RAG Configuration
 VECTORDB_PATH = "./vector_db"
