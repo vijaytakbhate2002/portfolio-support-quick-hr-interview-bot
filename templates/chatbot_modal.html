@@ -1,35 +1,53 @@
 <!-- Chatbot Modal -->
 <div id="chatbotModal" class="chatbot-modal">
-    <div class="chatbot-modal-content">
-        <div class="chatbot-header">
-            <div class="chatbot-title">
-                <i class="fas fa-robot"></i>
-                <span>AI HR Assistant</span>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <button id="endChatBtnModal" class="btn-secondary"
-                    style="padding: 0.3rem 0.8rem; font-size: 0.8rem; border-radius: 20px; color: white; border-color: rgba(255,255,255,0.2);">End
-                    Interview</button>
-                <div class="status-dot"></div>
-                <button id="closeChatBtn" class="close-modal-btn"><i class="fas fa-times"></i></button>
-            </div>
-        </div>
-        <div class="chatbot-messages" id="chatMessages">
-            <div class="message ai-message">
-                <strong></strong> Hello! I'm Vijay's AI assistant. Ask me about his skills,
-                projects, or experience to see if he's a good fit for your team.
-            </div>
-        </div>
-        <div class="chatbot-input-area">
-            <input type="text" id="userInput" class="chatbot-input" placeholder="Ask anything...">
-            <button id="sendBtn" class="send-btn">
-                <i class="fas fa-paper-plane"></i>
-            </button>
-        </div>
+  <div class="chatbot-modal-content">
+    <div class="chatbot-header">
+      <div class="chatbot-title">
+        <i class="fas fa-robot"></i>
+        <span>AI HR Assistant</span>
+      </div>
+      <div style="display: flex; gap: 10px; align-items: center">
+        <button
+          id="endChatBtnModal"
+          class="btn-secondary"
+          style="
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            border-radius: 20px;
+            color: white;
+            border-color: rgba(255, 255, 255, 0.2);
+          "
+        >
+          End Interview
+        </button>
+        <div class="status-dot"></div>
+        <button id="closeChatBtn" class="close-modal-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
     </div>
+    <div class="chatbot-messages" id="chatMessages">
+      <div class="message ai-message">
+        <strong></strong> Hello! I'm Vijay's AI assistant supported by GitHub
+        RAG. Ask me about his skills, projects, or experience to see if he's a
+        good fit for your team.
+      </div>
+    </div>
+    <div class="chatbot-input-area">
+      <input
+        type="text"
+        id="userInput"
+        class="chatbot-input"
+        placeholder="Ask anything..."
+      />
+      <button id="sendBtn" class="send-btn">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
 </div>
 
 <!-- Floating Action Button -->
 <button id="chatFab" class="chat-fab">
-    <i class="fas fa-comment-dots"></i>
+  <i class="fas fa-comment-dots"></i>
 </button>

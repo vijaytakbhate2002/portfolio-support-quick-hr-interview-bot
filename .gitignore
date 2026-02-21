@@ -40,3 +40,4 @@ logs.log
 credentials
 .pem
 temp.py
+src_backup/
