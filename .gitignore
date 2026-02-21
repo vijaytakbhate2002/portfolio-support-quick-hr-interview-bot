@@ -41,3 +41,4 @@ credentials
 .pem
 temp.py
 src_backup/
+temp*

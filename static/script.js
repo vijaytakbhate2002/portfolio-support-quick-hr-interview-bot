@@ -53,6 +53,25 @@ document.addEventListener("DOMContentLoaded", function () {
   const chatFab = document.getElementById("chatFab");
   const heroChatBtn = document.getElementById("heroChatBtn");
 
+  // Create RAG indicator in header (between title and controls)
+  const chatbotHeader = document.querySelector(".chatbot-header");
+  if (chatbotHeader) {
+    // only create if not present
+    if (!document.getElementById("ragIndicator")) {
+      const indicator = document.createElement("div");
+      indicator.id = "ragIndicator";
+      indicator.innerText = "RAG: --";
+      indicator.style.cssText =
+        "display:inline-block; padding:6px 10px; border-radius:12px; font-weight:700; font-size:0.82rem; color:#08121a; background:#e0e0e0; margin-left:12px;";
+      // insert after title if possible
+      const title = chatbotHeader.querySelector(".chatbot-title");
+      const controls = chatbotHeader.querySelector(".chatbot-controls");
+      if (controls) chatbotHeader.insertBefore(indicator, controls);
+      else if (title && title.nextSibling)
+        title.parentNode.insertBefore(indicator, title.nextSibling);
+    }
+  }
+
   // Open Modal
   function openModal() {
     if (chatbotModal) chatbotModal.style.display = "flex";
@@ -190,7 +209,23 @@ document.addEventListener("DOMContentLoaded", function () {
             content += "</ul></div>";
           }
 
-          addMessage(content);
+          // Update header RAG indicator if backend provided flag
+          try {
+            const ragFlag = data.rag_activation;
+            const ind = document.getElementById("ragIndicator");
+            if (ind && typeof ragFlag !== "undefined") {
+              const active = String(ragFlag).toLowerCase().includes("--on");
+              ind.innerText = active ? "RAG: ON" : "RAG: OFF";
+              ind.style.background = active ? "#7ef3b3" : "#ffd1a8";
+              ind.style.boxShadow = active
+                ? "0 0 12px rgba(126,243,179,0.45)"
+                : "none";
+            }
+          } catch (e) {
+            console.error("RAG indicator update failed", e);
+          }
+
+          addMessage(content, false, { rag_activation: data.rag_activation });
         }
       })
       .catch((error) => {
