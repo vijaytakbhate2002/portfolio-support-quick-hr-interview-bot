@@ -187,7 +187,7 @@ pytz==2025.2
 pywin32==311; sys_platform == "win32"
 PyYAML==6.0.3
 pyzmq==27.1.0
-rag-assisted-chatbot @ git+https://github.com/vijaytakbhate2002/rag_assisted_chatbot_package.git@a7435deee578ea3734b930f077be50e101d3e1b5
+rag-assisted-chatbot @ git+https://github.com/vijaytakbhate2002/rag_assisted_chatbot_package.git@4004334fd72e7736379d57298b062b4d2b0cabd8
 referencing>=0.31.0,<0.36.0
 regex==2025.11.3
 reportlab==4.4.7
