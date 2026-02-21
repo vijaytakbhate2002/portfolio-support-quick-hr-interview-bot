@@ -837,9 +837,9 @@ footer {
   backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  width: 90%;
-  max-width: 500px;
-  height: 600px;
+  width: 95%;
+  max-width: 980px;
+  height: 75vh;
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 50px rgba(0, 242, 234, 0.2);

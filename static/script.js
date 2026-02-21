@@ -72,6 +72,34 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Build a side-by-side container for chat messages and metadata panel
+  const modalContent = document.querySelector(".chatbot-modal-content");
+  let metaPanel = null;
+  if (modalContent && !document.getElementById("chatContentWrap")) {
+    const chatMessagesElem = document.getElementById("chatMessages");
+    if (chatMessagesElem) {
+      const wrapper = document.createElement("div");
+      wrapper.id = "chatContentWrap";
+      wrapper.style.cssText =
+        "display:flex; gap:12px; align-items:flex-start; width:100%;";
+
+      // Replace the chatMessages node in the DOM with the wrapper and move chatMessages inside it
+      modalContent.replaceChild(wrapper, chatMessagesElem);
+      chatMessagesElem.style.cssText =
+        "flex:1; overflow:auto; max-height: calc(60vh); padding-right:8px;";
+      wrapper.appendChild(chatMessagesElem);
+
+      // Create metadata panel hidden by default
+      metaPanel = document.createElement("aside");
+      metaPanel.id = "chatMetaPanel";
+      metaPanel.style.cssText =
+        "width:320px; flex:0 0 320px; max-height: calc(60vh); overflow:auto; background:rgba(10,10,10,0.35); border-radius:10px; border:1px solid rgba(255,255,255,0.03); padding:12px; display:none;";
+      wrapper.appendChild(metaPanel);
+
+      modalContent.style.position = modalContent.style.position || "relative";
+    }
+  }
+
   // Open Modal
   function openModal() {
     if (chatbotModal) chatbotModal.style.display = "flex";
@@ -136,6 +164,60 @@ document.addEventListener("DOMContentLoaded", function () {
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
+  function renderMetadatas(metadatas) {
+    metaPanel = document.getElementById("chatMetaPanel");
+    if (!metaPanel) return;
+    if (!Array.isArray(metadatas) || metadatas.length === 0) {
+      metaPanel.style.display = "none";
+      metaPanel.innerHTML = "";
+      return;
+    }
+
+    let html = `<h3 style="margin:0 0 10px 0; color:#e6f7ff; font-weight:800;">References / Metadata</h3>`;
+    metadatas.forEach((m) => {
+      const name = m.full_name || m.repo_name || "Unknown";
+      const desc = m.description || "No description";
+      const lang = m.language || "--";
+      const repoUrl = m.repository_url || m.download_url || "";
+      const downloadUrl = m.download_url || "";
+      const created = m.created_at
+        ? new Date(m.created_at).toLocaleDateString()
+        : "";
+      const updated = m.updated_at
+        ? new Date(m.updated_at).toLocaleDateString()
+        : "";
+      const pushed = m.pushed_at
+        ? new Date(m.pushed_at).toLocaleDateString()
+        : "";
+      const fullName = m.full_name || "";
+      const isPrivate =
+        typeof m.private !== "undefined" ? (m.private ? "Yes" : "No") : "--";
+      const size = typeof m.size !== "undefined" ? `${m.size}` : "--";
+
+      html += `<div style="background:rgba(255,255,255,0.03); padding:12px; margin-bottom:12px; border-radius:10px;">`;
+      html += `<div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">`;
+      html += `<div style="font-weight:800; color:#00f2ea; font-size:0.95rem;"><a href="${repoUrl}" target="_blank" style="color:#00f2ea; text-decoration:none;">${name}</a></div>`;
+      html += `<div style="font-size:0.78rem; color:#a0a0a0;">${lang}</div>`;
+      html += `</div>`;
+      if (desc)
+        html += `<div style="color:#cbd5e1; font-size:0.88rem; margin:8px 0;">${desc}</div>`;
+      html += `<div style="display:flex; flex-wrap:wrap; gap:8px; font-size:0.78rem; color:#a0a0a0;">`;
+      if (fullName) html += `<div>Full: ${fullName}</div>`;
+      if (created) html += `<div>Created: ${created}</div>`;
+      if (updated) html += `<div>Updated: ${updated}</div>`;
+      if (pushed) html += `<div>Pushed: ${pushed}</div>`;
+      html += `<div>Private: ${isPrivate}</div>`;
+      html += `<div>Size: ${size}</div>`;
+      html += `</div>`;
+      if (downloadUrl)
+        html += `<div style="margin-top:8px;"><a href="${downloadUrl}" target="_blank" style="color:#00f2ea; text-decoration:underline;">Download / View file</a></div>`;
+      html += `</div>`;
+    });
+
+    metaPanel.innerHTML = html;
+    metaPanel.style.display = "block";
+  }
+
   function sendMessage() {
     const message = userInput.value.trim();
     if (!message) return;
@@ -144,13 +226,6 @@ document.addEventListener("DOMContentLoaded", function () {
     userInput.value = "";
     userInput.disabled = true;
     sendBtn.disabled = true;
-
-    // Show loader
-    // const loadingDiv = document.createElement("div");
-    // loadingDiv.className = "message ai-message";
-    // loadingDiv.innerHTML = '<span class="loader"></span>';
-    // chatMessages.appendChild(loadingDiv);
-    // chatMessages.scrollTop = chatMessages.scrollHeight;
 
     // Show animated typing indicator
     const loadingDiv = document.createElement("div");
@@ -223,6 +298,16 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           } catch (e) {
             console.error("RAG indicator update failed", e);
+          }
+
+          // Render metadata panel only when RAG is ON
+          try {
+            const ragFlag = data.rag_activation;
+            const isOn = String(ragFlag).toLowerCase().includes("--on");
+            if (isOn) renderMetadatas(data.metadatas);
+            else renderMetadatas([]);
+          } catch (e) {
+            console.error("Failed to render metadatas", e);
           }
 
           addMessage(content, false, { rag_activation: data.rag_activation });
