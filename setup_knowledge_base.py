@@ -57,12 +57,12 @@ def setup():
         vectordb_path=VECTORDB_PATH,
         embedding_model_name=EMBEDDING_MODEL,
         collection_name=COLLECTION_NAME,
-        metadatas_path=METADATA_FILE_UPDATED
+        metadatas_path=METADATA_FILE_UPDATED,
+        chunk_size=300,
+        chunk_overlap=50
     )
     chunks, document_names = builder.split_documents(
-        documents=builder.load_documents(),
-        chunk_size=200,
-        chunk_overlap=200
+        documents=builder.load_documents()
     )
 
     # print("document_names: ", document_names)

@@ -84,14 +84,18 @@ def chat():
             return jsonify({'error': 'No message provided'}), 400
         
         ai_result = assistant.chat_with_model(user_message)
-        unique_meatadas = metadata_selector(ai_result['metadatas'][0])
+        # unique_meatadas = metadata_selector(ai_result['metadatas'][0])
+        metadatas = ai_result.get('metadatas', [])
+        unique_metadatas = []
+        if metadatas and isinstance(metadatas, list):
+            unique_metadatas = metadata_selector(metadatas[0])
         response_model = ai_result['response']
         response_data = {
             'response_message': response_model.response_message,
             'reference_links': response_model.reference_links,
             'question_category': ai_result.get('question_category', 'Uncategorized'),
             'rag_activation': "--on" if ai_result.get('rag_activation', '').lower() == "yes" else "--off",
-            'metadatas': unique_meatadas
+            'metadatas': unique_metadatas
         }
 
         return jsonify(response_data)
@@ -165,5 +169,5 @@ def end_chat():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=False)
 
