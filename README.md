@@ -143,9 +143,13 @@ Integrated **GitHub Actions** to automatically test LLM responses and maintain m
 
 ## 🎥 Application Demo
 
-<p align="center">
+<!-- <p align="center">
   <img src="https://github.com/user-attachments/assets/b0b9b959-a181-404f-9c85-bfc13d0ed817" width="49%" />
   <img src="https://github.com/user-attachments/assets/b387f6be-3b1c-47c0-95ab-96eb9e33c5da" width="49%" />
+</p> -->
+<p align="center">
+<img width="1903" height="909" alt="image" src="https://github.com/user-attachments/assets/06bf9c55-7bc6-437c-b804-5267e58e6eeb" />
+<img width="1544" height="844" alt="image" src="https://github.com/user-attachments/assets/df19da53-08cb-4a26-b3da-133a486ff216" />
 </p>
 
 ---
