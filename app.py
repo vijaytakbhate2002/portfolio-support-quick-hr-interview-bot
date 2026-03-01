@@ -13,7 +13,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from src.config import GPT_MODEL_NAME
-from rag_assisted_bot import Assistant
+from rag_assisted_bots import GithubAssistant
 
 # RAG Configuration
 VECTORDB_PATH = "./vector_db"
@@ -22,8 +22,8 @@ COLLECTION_NAME = "my_embeddings"
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SESSION_SECRET', 'dev-secret-key-change-in-production')
 
-# Initialize the new RAG Assistant
-assistant = Assistant(
+# Initialize the new RAG GithubAssistant
+assistant = GithubAssistant(
     gpt_model_name=GPT_MODEL_NAME,
     vectordb_path=VECTORDB_PATH,
     collection_name=COLLECTION_NAME,
@@ -84,18 +84,13 @@ def chat():
             return jsonify({'error': 'No message provided'}), 400
         
         ai_result = assistant.chat_with_model(user_message)
-        # unique_meatadas = metadata_selector(ai_result['metadatas'][0])
-        metadatas = ai_result.get('metadatas', [])
-        unique_metadatas = []
-        if metadatas and isinstance(metadatas, list):
-            unique_metadatas = metadata_selector(metadatas[0])
         response_model = ai_result['response']
+
         response_data = {
             'response_message': response_model.response_message,
             'reference_links': response_model.reference_links,
-            'question_category': ai_result.get('question_category', 'Uncategorized'),
-            'rag_activation': "--on" if ai_result.get('rag_activation', '').lower() == "yes" else "--off",
-            'metadatas': unique_metadatas
+            'rag_relevance': "--on" if ai_result.get('rag_relevance', '').lower() == "yes" else "--off",
+            'metadatas': ai_result.get('metadatas', [])
         }
 
         return jsonify(response_data)

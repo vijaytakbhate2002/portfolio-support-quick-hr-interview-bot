@@ -1,5 +1,5 @@
 import pytest
-from rag_assisted_bot import Assistant
+from rag_assisted_bots import GithubAssistant
 import os
 
 # Mock constants if they are not available from the package directly or just use literals for tests
@@ -10,14 +10,14 @@ COLLECTION_NAME = "my_embeddings"
 
 @pytest.fixture(scope="module")
 def assistant():
-    # Ensure environment variables are set or handled if needed for the Assistant to initialize
+    # Ensure environment variables are set or handled if needed for the GithubAssistant to initialize
     # For CI/CD, these should be in the environment secrets
     
     # We might need to mock the vector db path or ensure it exists
     # For now, we assume the environment where tests run has the necessary setup or we mock it
     # However, since this looks like an integration test, we try to initialize it for real
     
-    return Assistant(
+    return GithubAssistant(
         gpt_model_name=GPT_MODEL_NAME,
         vectordb_path=VECTORDB_PATH,
         collection_name=COLLECTION_NAME,
@@ -50,7 +50,7 @@ def test_chat_response_structure(assistant):
         assert hasattr(response_model, 'response_message') or isinstance(response_model, dict)
         
     except Exception as e:
-        pytest.fail(f"Assistant chat failed: {e}")
+        pytest.fail(f"GithubAssistant chat failed: {e}")
 
 def test_question_categorization(assistant):
     """

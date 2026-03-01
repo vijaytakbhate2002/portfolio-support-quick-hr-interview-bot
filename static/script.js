@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!document.getElementById("ragIndicator")) {
       const indicator = document.createElement("div");
       indicator.id = "ragIndicator";
-      indicator.innerText = "RAG: --";
+      indicator.innerText = "Retrieval Relevance: --";
       indicator.style.cssText =
         "display:inline-block; padding:6px 10px; border-radius:12px; font-weight:700; font-size:0.82rem; color:#08121a; background:#e0e0e0; margin-left:12px;";
       // insert after title if possible
@@ -270,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
             content +=
               '<div class="reference-section" style="margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 5px;">';
             content +=
-              '<strong style="display:block; margin-bottom: 5px; font-size: 0.9em; color: #a0a0a0;">References:</strong>';
+              '<strong style="display:block; margin-bottom: 5px; font-size: 0.9em; color: #a0a0a0;">RAG References:</strong>';
             content +=
               '<ul style="padding-left: 20px; list-style-type: disc; font-size: 0.85em;">';
             data.reference_links.forEach((link) => {
@@ -286,11 +286,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
           // Update header RAG indicator if backend provided flag
           try {
-            const ragFlag = data.rag_activation;
+            const ragFlag = data.rag_relevance;
             const ind = document.getElementById("ragIndicator");
             if (ind && typeof ragFlag !== "undefined") {
               const active = String(ragFlag).toLowerCase().includes("--on");
-              ind.innerText = active ? "RAG: ON" : "RAG: OFF";
+              ind.innerText = active ? "RAG: RELEVANT" : "RAG: NON RELEVANT";
               ind.style.background = active ? "#7ef3b3" : "#ffd1a8";
               ind.style.boxShadow = active
                 ? "0 0 12px rgba(126,243,179,0.45)"
@@ -302,7 +302,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           // Render metadata panel only when RAG is ON
           try {
-            const ragFlag = data.rag_activation;
+            const ragFlag = data.rag_relevance;
             const isOn = String(ragFlag).toLowerCase().includes("--on");
             if (isOn) renderMetadatas(data.metadatas);
             else renderMetadatas([]);
@@ -310,7 +310,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("Failed to render metadatas", e);
           }
 
-          addMessage(content, false, { rag_activation: data.rag_activation });
+          addMessage(content, false, { rag_relevance: data.rag_relevance });
         }
       })
       .catch((error) => {

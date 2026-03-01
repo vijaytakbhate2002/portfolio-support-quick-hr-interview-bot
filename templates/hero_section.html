@@ -1,27 +1,41 @@
 <!-- Hero Section -->
 <section id="home" class="hero">
-    <div class="hero-container">
-        <div class="hero-content">
-            <span class="hero-badge">Available for Hire</span>
-            <h1 class="hero-title">Hi, I'm <br><span>Vijay Takbhate</span></h1>
-            <p class="hero-subtitle">AI/ML Engineer & MLOps Specialist</p>
-            <p class="hero-description">
-                Building intelligent systems with Machine Learning, automating workflows with MLOps, and creating
-                production-ready AI solutions. Passionate about bringing AI from research to real-world impact.
-            </p>
-            <div class="btn-group">
-                <a href="#projects" class="btn btn-primary">View Projects <i class="fas fa-arrow-right"></i></a>
-                <a href="{{ url_for('static', filename='Vijay_Takbhate_Resume.pdf') }}" class="btn btn-secondary"
-                    download onclick="downloadResume(event)">Download Resume <i class="fas fa-download"></i></a>
-                <button id="heroChatBtn" class="btn btn-glow">Chat with AI <i class="fas fa-robot"></i></button>
-            </div>
-        </div>
-
-        <!-- Profile Picture -->
-        <div class="about-img-wrapper" style="justify-self: center;">
-            <div class="img-frame" style="width: 400px; height: 400px;">
-                <img src="{{ url_for('static', filename='profile_pic.jpg') }}" alt="Vijay Takbhate" class="profile-img">
-            </div>
-        </div>
+  <div class="hero-container">
+    <div class="hero-content">
+      <span class="hero-badge">Available for Hire</span>
+      <h1 class="hero-title">Hi, I'm <br /><span>Vijay Takbhate</span></h1>
+      <p class="hero-subtitle">AI/ML Engineer & MLOps Specialist</p>
+      <p class="hero-description">
+        Building intelligent systems with Machine Learning, automating workflows
+        with MLOps, and creating production-ready AI solutions. Passionate about
+        bringing AI from research to real-world impact.
+      </p>
+      <div class="btn-group">
+        <a href="#projects" class="btn btn-primary"
+          >View Projects <i class="fas fa-arrow-right"></i
+        ></a>
+        <a
+          href="{{ url_for('static', filename='Vijay_Takbhate_Resume.pdf') }}"
+          class="btn btn-secondary"
+          download
+          onclick="downloadResume(event)"
+          >Download Resume <i class="fas fa-download"></i
+        ></a>
+        <button id="heroChatBtn" class="btn btn-glow">
+          Ask My GIthub <i class="fas fa-robot"></i>
+        </button>
+      </div>
     </div>
+
+    <!-- Profile Picture -->
+    <div class="about-img-wrapper" style="justify-self: center">
+      <div class="img-frame" style="width: 400px; height: 400px">
+        <img
+          src="{{ url_for('static', filename='profile_pic.jpg') }}"
+          alt="Vijay Takbhate"
+          class="profile-img"
+        />
+      </div>
+    </div>
+  </div>
 </section>

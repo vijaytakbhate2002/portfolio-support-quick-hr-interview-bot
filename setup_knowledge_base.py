@@ -1,4 +1,4 @@
-from rag_assisted_bot.rag_assisted_chatbot import build_vectordb, github_scrapper
+from rag_assisted_bots.ask_github import build_vectordb, github_scrapper
 from dotenv import load_dotenv
 import os
 import json
@@ -35,13 +35,10 @@ def replace_none_with_string(data):
     else:
         return data
     
-
+    
 def setup():
     print("Starting GitHub Scraping...")
-    # Ensure directories exist
     os.makedirs(README_FILES_DIR, exist_ok=True)
-    
-    # Initialize and run scraper
     scrapper = github_scrapper.GithubScrapper(
         username=USERNAME, 
         save_folder=README_FILES_DIR, 
@@ -51,21 +48,17 @@ def setup():
     print("Scraping completed.")
 
     print("Building Vector Database...")
-    # Initialize and run vector DB builder
-    builder = build_vectordb.BuildVectorDB(
+    
+    builder = build_vectordb.GithubBuildVectorDB(
         directory_path=README_FILES_DIR,
         vectordb_path=VECTORDB_PATH,
         embedding_model_name=EMBEDDING_MODEL,
         collection_name=COLLECTION_NAME,
         metadatas_path=METADATA_FILE_UPDATED,
-        chunk_size=300,
-        chunk_overlap=50
     )
     chunks, document_names = builder.split_documents(
         documents=builder.load_documents()
     )
-
-    # print("document_names: ", document_names)
 
     # let's update the sequence of metadata.json to match it with the document sequence
     pdf_names = [USERNAME + "/" + doc.split("\\")[-1].replace(".pdf", "") for doc in document_names]
@@ -84,6 +77,25 @@ def setup():
                 found_match = True
         if not found_match:
             raise ValueError(f"No matching metadata found for PDF: {pdf_name}")
+    
+    # chunks_docs.json is the file to store document names and their corresponding chunks. It is used for debugging and verification purposes.
+    with open(os.path.join(GITHUB_DATA_DIR, 'chunks_docs.json'), 'w', encoding="utf-8") as f:
+        json.dump(
+            {
+                "documents": document_names,
+                "chunks": [
+                    {
+                        "content": doc.page_content,
+                        "metadata": doc.metadata
+                    }
+                    for doc in chunks
+                ],
+                "reordered_metadata": reordered_metadata
+            },
+            f,
+            indent=2,
+            ensure_ascii=False
+        )
 
     # Write reordered metadata back to file
     with open(METADATA_FILE_UPDATED, 'w') as f:
@@ -91,6 +103,7 @@ def setup():
 
     builder.build(chunks, metadatas=reordered_metadata)
     print("Vector Database built successfully.")
+
 
 if __name__ == "__main__":
     setup()

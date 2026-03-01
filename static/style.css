@@ -1028,3 +1028,41 @@ footer {
     opacity: 1;
   }
 }
+/* Intro / Welcome message */
+.intro-message {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.15),
+    rgba(139, 92, 246, 0.15)
+  );
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  border-left: 4px solid #22c55e;
+  padding: 14px 16px;
+  border-radius: 12px;
+  color: #e5e7eb;
+  box-shadow: 0 0 18px rgba(34, 197, 94, 0.15);
+  animation: introFade 0.6s ease;
+}
+
+/* Small badge */
+.intro-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #22c55e;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Smooth entrance */
+@keyframes introFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
