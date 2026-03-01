@@ -25,7 +25,7 @@ def assistant():
         rag_activated=True
     )
 
-test_question = "What challenges did you face in your last project, and how did you overcome them?"
+test_question = "Tell me about a project where you worked on these skills: Flask, Python, AWS, LLM, RAG, ChromaDB, VectorDB etc."
 
 def test_chat_response_structure(assistant):
     """
@@ -42,7 +42,7 @@ def test_chat_response_structure(assistant):
         
         assert isinstance(response_data, dict), "Response must be a dictionary."
         assert 'response' in response_data, "Missing 'response' key."
-        assert 'question_category' in response_data, "Missing 'question_category' key."
+        assert 'rag_relevance' in response_data, "Missing 'rag_relevance' key."
         
         response_model = response_data['response']
         # Check if it has expected attributes (pydantic model or dict)
@@ -51,16 +51,3 @@ def test_chat_response_structure(assistant):
         
     except Exception as e:
         pytest.fail(f"GithubAssistant chat failed: {e}")
-
-def test_question_categorization(assistant):
-    """
-    Test if the categorization logic works (roughly).
-    """
-    try:
-        response_data = assistant.chat_with_model(test_question)
-        category = response_data.get('question_category', '').lower()
-        
-        # We expect 'project' for the test question
-        assert 'project' in category, f"Expected category 'project' but got '{category}'"
-    except Exception as e:
-        pytest.fail(f"Categorization test failed: {e}")
