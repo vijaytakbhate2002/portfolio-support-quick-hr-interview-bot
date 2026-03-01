@@ -49,11 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Modal Elements
   const chatbotModal = document.getElementById("chatbotModal");
-  const closeChatBtn = document.getElementById("closeChatBtn");
   const chatFab = document.getElementById("chatFab");
   const heroChatBtn = document.getElementById("heroChatBtn");
 
-  // Create RAG indicator in header (between title and controls)
   const chatbotHeader = document.querySelector(".chatbot-header");
   if (chatbotHeader) {
     // only create if not present
@@ -72,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Build a side-by-side container for chat messages and metadata panel
   const modalContent = document.querySelector(".chatbot-modal-content");
   let metaPanel = null;
   if (modalContent && !document.getElementById("chatContentWrap")) {
@@ -81,21 +78,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const wrapper = document.createElement("div");
       wrapper.id = "chatContentWrap";
       wrapper.style.cssText =
-        "display:flex; gap:12px; align-items:flex-start; width:100%;";
-
-      // Replace the chatMessages node in the DOM with the wrapper and move chatMessages inside it
+        "display:flex; gap:12px; align-items:stretch; width:100%; flex:1;";
       modalContent.replaceChild(wrapper, chatMessagesElem);
-      chatMessagesElem.style.cssText =
-        "flex:1; overflow:auto; max-height: calc(60vh); padding-right:8px;";
       wrapper.appendChild(chatMessagesElem);
-
-      // Create metadata panel hidden by default
-      metaPanel = document.createElement("aside");
-      metaPanel.id = "chatMetaPanel";
-      metaPanel.style.cssText =
-        "width:320px; flex:0 0 320px; max-height: calc(60vh); overflow:auto; background:rgba(10,10,10,0.35); border-radius:10px; border:1px solid rgba(255,255,255,0.03); padding:12px; display:none;";
-      wrapper.appendChild(metaPanel);
-
+      chatMessagesElem.style.cssText =
+        "flex:1; overflow:auto; padding-right:8px;";
       modalContent.style.position = modalContent.style.position || "relative";
     }
   }
@@ -112,11 +99,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (chatFab) chatFab.addEventListener("click", openModal);
   if (heroChatBtn) heroChatBtn.addEventListener("click", openModal);
-  if (closeChatBtn) closeChatBtn.addEventListener("click", closeModal);
 
-  // Close on outside click
+  // Close on outside click -> treat as ending the interview (send summary)
   window.addEventListener("click", (e) => {
-    if (e.target === chatbotModal) closeModal();
+    if (e.target === chatbotModal) {
+      if (typeof endInterview === "function") {
+        endInterview();
+      } else {
+        closeModal();
+      }
+    }
   });
 
   function formatText(text) {
@@ -346,62 +338,73 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // --- End Chat Logic ---
-  const endChatBtn = document.getElementById("endChatBtnModal");
-  if (endChatBtn) {
-    endChatBtn.addEventListener("click", () => {
-      if (
-        confirm(
-          "Are you sure you want to end the interview? I'll send a summary to Vijay.",
-        )
-      ) {
-        // Gather history
-        let history = "";
-        const messages = chatMessages.querySelectorAll(".message");
-        messages.forEach((msg) => {
-          const isUser = msg.classList.contains("user-message");
-          // Simple text extraction, might need refinement based on HTML structure
-          const text = msg.innerText
-            .replace("AI Assistant:", "")
-            .replace("You:", "")
-            .trim();
-          if (text && text !== "Typing...") {
-            history += `${isUser ? "User" : "AI"}: ${text}\n`;
-          }
-        });
+  // Unified end interview function so multiple UI actions trigger the same flow
+  function endInterview() {
+    const endChatBtnLocal = document.getElementById("endChatBtnModal");
+    if (
+      !confirm(
+        "Are you sure you want to end the interview? I'll send a summary to Vijay.",
+      )
+    )
+      return;
 
-        if (!history.trim()) {
-          alert("No conversation to summarize yet.");
-          return;
-        }
-
-        // Disable button
-        endChatBtn.disabled = true;
-        endChatBtn.innerText = "Ending...";
-
-        fetch("/end_chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ history: history }),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.status === "success") {
-              alert("Interview ended. Summary sent successfully!");
-              addMessage("<em>Interview ended. Summary sent to Vijay.</em>");
-            } else {
-              alert("Failed to send summary.");
-              endChatBtn.disabled = false;
-              endChatBtn.innerText = "End Interview";
-            }
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-            alert("Error ending interview.");
-            endChatBtn.disabled = false;
-            endChatBtn.innerText = "End Interview";
-          });
+    // Gather history
+    let history = "";
+    const messages = chatMessages.querySelectorAll(".message");
+    messages.forEach((msg) => {
+      const isUser = msg.classList.contains("user-message");
+      const text = msg.innerText
+        .replace("AI Assistant:", "")
+        .replace("You:", "")
+        .trim();
+      if (text && text !== "Typing...") {
+        history += `${isUser ? "User" : "AI"}: ${text}\n`;
       }
     });
+
+    if (!history.trim()) {
+      alert("No conversation to summarize yet.");
+      return;
+    }
+
+    if (endChatBtnLocal) {
+      endChatBtnLocal.disabled = true;
+      endChatBtnLocal.innerText = "Ending...";
+    }
+
+    fetch("/end_chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ history: history }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "success") {
+          alert("Interview ended. Summary sent successfully!");
+          addMessage("<em>Interview ended. Summary sent to Vijay.</em>");
+          closeModal();
+        } else {
+          alert("Failed to send summary.");
+          if (endChatBtnLocal) {
+            endChatBtnLocal.disabled = false;
+            endChatBtnLocal.innerText = "End Interview";
+          }
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("Error ending interview.");
+        if (endChatBtnLocal) {
+          endChatBtnLocal.disabled = false;
+          endChatBtnLocal.innerText = "End Interview";
+        }
+      });
+  }
+
+  // Attach endInterview to the End Interview button
+  const endChatBtn = document.getElementById("endChatBtnModal");
+  if (endChatBtn) {
+    endChatBtn.addEventListener("click", endInterview);
   }
 
   // --- Kaggle Badges Injection ---
