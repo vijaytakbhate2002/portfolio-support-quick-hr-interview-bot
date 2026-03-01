@@ -344,6 +344,61 @@ body {
   transform: scale(1.1);
 }
 
+/* Chatbot Hints */
+.chatbot-input-area {
+  position: relative;
+}
+
+.chatbot-hints-container {
+  position: absolute;
+  top: -3rem;
+  left: 1rem;
+  right: 1rem;
+  height: auto;
+  overflow: visible;
+  pointer-events: none; /* prevent clicks interfering with user input */
+}
+
+.chatbot-hint {
+  /* inherited placement from container */
+  padding: 0.6rem 1rem;
+  background: rgba(0, 242, 234, 0.08);
+  border: 1px solid rgba(0, 242, 234, 0.2);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  font-style: italic;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin-bottom: 0.5rem;
+  animation: hintFadeInOut 0.6s ease-in-out;
+  opacity: 0;
+}
+
+.chatbot-hint.active {
+  animation: hintFadeInOut 4s ease-in-out;
+  opacity: 0.6;
+}
+
+@keyframes hintFadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  15% {
+    opacity: 0.6;
+    transform: translateY(0);
+  }
+  85% {
+    opacity: 0.6;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+}
+
 /* Sections */
 .section {
   padding: 100px 5%;

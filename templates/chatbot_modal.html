@@ -33,12 +33,15 @@
         his skills, projects, or experience to see if he's a good fit for your
         team.
       </div>
-      <div class="intro-hint">
+      <!-- <div class="intro-hint">
         💡 Try asking: Tell me about a project where you worked on these skills:
         Flask, Python, AWS, LLM, RAG, ChromaDB, VectorDB etc.
-      </div>
+      </div> -->
     </div>
     <div class="chatbot-input-area">
+      <div class="chatbot-hints-container" id="hintsContainer">
+        <div class="chatbot-hint" id="hintText"></div>
+      </div>
       <input
         type="text"
         id="userInput"

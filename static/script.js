@@ -77,12 +77,24 @@ document.addEventListener("DOMContentLoaded", function () {
     if (chatMessagesElem) {
       const wrapper = document.createElement("div");
       wrapper.id = "chatContentWrap";
+      // flex container horizontally: chat + metadata
+      // min-height:0 prevents children from expanding and pushing input out
       wrapper.style.cssText =
-        "display:flex; gap:12px; align-items:stretch; width:100%; flex:1;";
+        "display:flex; gap:12px; align-items:stretch; width:100%; flex:1; min-height:0;";
       modalContent.replaceChild(wrapper, chatMessagesElem);
       wrapper.appendChild(chatMessagesElem);
+
+      // configure chat messages area for proper scrolling
       chatMessagesElem.style.cssText =
-        "flex:1; overflow:auto; padding-right:8px;";
+        "flex:1; overflow:auto; padding-right:8px; min-height:0;";
+
+      // create metadata panel (hidden by default)
+      metaPanel = document.createElement("aside");
+      metaPanel.id = "chatMetaPanel";
+      metaPanel.style.cssText =
+        "width:320px; flex:0 0 320px; max-height: calc(60vh); overflow:auto; background:rgba(10,10,10,0.35); border-radius:10px; border:1px solid rgba(255,255,255,0.03); padding:12px; display:none;";
+      wrapper.appendChild(metaPanel);
+
       modalContent.style.position = modalContent.style.position || "relative";
     }
   }
@@ -110,6 +122,63 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
+
+  // --- Hint Rotation System ---
+  const hints = [
+    "💡 Tell me about a project where you worked on these skills: Flask, Python, AWS, LLM, RAG, ChromaDB, VectorDB etc.",
+    "💡 Describe your project where you worked on technologies like TensorFlow, PyTorch, Scikit-learn",
+    "💡 Have you worked on medical insurance prediction project?",
+  ];
+
+  const hintElement = document.getElementById("hintText");
+  let hintIndex = 0;
+
+  function showNextHint() {
+    if (!hintElement) return;
+
+    // Remove active class to reset animation
+    hintElement.classList.remove("active");
+
+    // Trigger reflow to restart animation
+    void hintElement.offsetWidth;
+
+    // Update text and add active class
+    hintElement.textContent = hints[hintIndex];
+    hintElement.classList.add("active");
+
+    hintIndex = (hintIndex + 1) % hints.length;
+  }
+
+  // Start hint rotation when modal opens
+  function openModalWithHints() {
+    if (chatbotModal) chatbotModal.style.display = "flex";
+    // Show first hint immediately
+    showNextHint();
+    // Then rotate every 4 seconds (matching animation duration + small gap)
+    if (!window.hintInterval) {
+      window.hintInterval = setInterval(showNextHint, 4500);
+    }
+  }
+
+  // Stop hints when modal closes
+  function closeModalStopHints() {
+    if (chatbotModal) chatbotModal.style.display = "none";
+    if (hintElement) hintElement.classList.remove("active");
+    if (window.hintInterval) {
+      clearInterval(window.hintInterval);
+      window.hintInterval = null;
+    }
+  }
+
+  // Update modal event listeners to use the new functions
+  if (chatFab) chatFab.addEventListener("click", openModalWithHints);
+  if (heroChatBtn) heroChatBtn.addEventListener("click", openModalWithHints);
+
+  // Override closeModal for hint cleanup (but keep original behavior)
+  const originalCloseModal = closeModal;
+  closeModal = function () {
+    closeModalStopHints();
+  };
 
   function formatText(text) {
     if (typeof text !== "string") return text;
@@ -282,7 +351,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const ind = document.getElementById("ragIndicator");
             if (ind && typeof ragFlag !== "undefined") {
               const active = String(ragFlag).toLowerCase().includes("--on");
-              ind.innerText = active ? "RAG: RELEVANT" : "RAG: NON RELEVANT";
+              ind.innerText = active ? "RAG: ✅" : "RAG: ❌";
               ind.style.background = active ? "#7ef3b3" : "#ffd1a8";
               ind.style.boxShadow = active
                 ? "0 0 12px rgba(126,243,179,0.45)"
