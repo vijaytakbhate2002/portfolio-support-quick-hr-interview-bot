@@ -186,7 +186,7 @@ pytz==2025.2
 pywin32==311; sys_platform == "win32"
 PyYAML==6.0.3
 pyzmq==27.1.0
-rag-assisted-chatbots @ git+https://github.com/vijaytakbhate2002/rag_assisted_chatbot_package.git@4b16a54c85236e4c631cf341d6f5f4195b4e3ae2
+rag-assisted-chatbots @ git+https://github.com/vijaytakbhate2002/rag_assisted_chatbot_package.git@5c336a466dac8e5ff76725941a05a5fd6ae846d1
 referencing>=0.31.0,<0.36.0
 regex==2025.11.3
 reportlab==4.4.7
@@ -233,7 +233,6 @@ typer-slim==0.21.0
 typing-inspect==0.9.0
 typing-inspection==0.4.2
 typing_extensions==4.15.0
-tzdata==2025.2
 tzlocal==5.3.1
 uritools==6.0.1
 urllib3==2.3.0
