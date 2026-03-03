@@ -200,13 +200,13 @@
             "repository_url": "https://github.com/vijaytakbhate2002/medical-insurance-cost-prediction-SVR",
             "repo_name": "medical-insurance-cost-prediction-SVR",
             "created_at": "2025-09-22T03:25:09Z",
-            "updated_at": "2025-10-08T02:40:49Z",
-            "pushed_at": "2025-10-08T02:40:46Z",
+            "updated_at": "2026-03-01T12:23:03Z",
+            "pushed_at": "2026-03-01T12:22:59Z",
             "language": "Jupyter Notebook",
             "full_name": "vijaytakbhate2002/medical-insurance-cost-prediction-SVR",
             "private": false,
             "description": "Model is able to predict insurance cost based on customer profile",
-            "size": 6665
+            "size": 6480
         },
         {
             "download_url": "https://raw.githubusercontent.com/vijaytakbhate2002/Microsoft-Machine-Failure-Detection/main/README.md",
@@ -343,13 +343,13 @@
             "repository_url": "https://github.com/vijaytakbhate2002/portfolio-support-quick-hr-interview-bot",
             "repo_name": "portfolio-support-quick-hr-interview-bot",
             "created_at": "2025-10-20T06:03:14Z",
-            "updated_at": "2026-02-22T10:42:33Z",
-            "pushed_at": "2026-02-22T10:42:29Z",
+            "updated_at": "2026-03-01T17:52:23Z",
+            "pushed_at": "2026-03-01T17:52:19Z",
             "language": "HTML",
             "full_name": "vijaytakbhate2002/portfolio-support-quick-hr-interview-bot",
             "private": false,
             "description": "A GPT-5-mini powered assistant that lets HR interact with your resume, simulate quick interviews, and provide concise, professional responses.",
-            "size": 5900
+            "size": 50006
         },
         {
             "download_url": "https://raw.githubusercontent.com/vijaytakbhate2002/power-bi-customer-analysis/main/README.md",
@@ -369,13 +369,13 @@
             "repository_url": "https://github.com/vijaytakbhate2002/rag_assisted_chatbot_package",
             "repo_name": "rag_assisted_chatbot_package",
             "created_at": "2025-12-25T13:25:45Z",
-            "updated_at": "2026-03-01T10:18:11Z",
-            "pushed_at": "2026-03-01T10:18:07Z",
+            "updated_at": "2026-03-03T14:27:22Z",
+            "pushed_at": "2026-03-03T14:27:18Z",
             "language": "Jupyter Notebook",
             "full_name": "vijaytakbhate2002/rag_assisted_chatbot_package",
             "private": false,
             "description": null,
-            "size": 7716
+            "size": 9701
         },
         {
             "download_url": "https://raw.githubusercontent.com/vijaytakbhate2002/remote-experiment-tracking-with-mlflow-dagshub/main/README.md",

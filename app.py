@@ -13,19 +13,27 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from src.config import GPT_MODEL_NAME
-from rag_assisted_bots import GithubAssistant
+from rag_assisted_bots import Assistant
 
 # RAG Configuration
-VECTORDB_PATH = "./vector_db"
+GITHUB_VECTORDB_PATH = "./github_vector_db"
+MEDIUM_VECTORDB_PATH = "./medium_vector_db"
 COLLECTION_NAME = "my_embeddings"
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SESSION_SECRET', 'dev-secret-key-change-in-production')
 
-# Initialize the new RAG GithubAssistant
-assistant = GithubAssistant(
+github_assistant = Assistant(
     gpt_model_name=GPT_MODEL_NAME,
-    vectordb_path=VECTORDB_PATH,
+    vectordb_path=GITHUB_VECTORDB_PATH,
+    collection_name=COLLECTION_NAME,
+    temperature=0.7,
+    rag_activated=True
+)
+
+medium_assistant = Assistant(
+    gpt_model_name=GPT_MODEL_NAME,
+    vectordb_path=MEDIUM_VECTORDB_PATH,
     collection_name=COLLECTION_NAME,
     temperature=0.7,
     rag_activated=True
@@ -83,7 +91,7 @@ def chat():
         if not user_message:
             return jsonify({'error': 'No message provided'}), 400
         
-        ai_result = assistant.chat_with_model(user_message)
+        ai_result = github_assistant.chat_with_model(user_message)
         response_model = ai_result['response']
 
         response_data = {
