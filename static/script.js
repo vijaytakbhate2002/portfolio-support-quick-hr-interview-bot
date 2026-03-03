@@ -115,13 +115,6 @@ document.addEventListener("DOMContentLoaded", function () {
         currentAssistant === "medium" ? "Ask My Medium" : "Ask My GitHub";
     }
 
-    // update switch button label so it shows the alternate target
-    const switchBtn = document.getElementById("switchAssistantBtn");
-    if (switchBtn) {
-      switchBtn.textContent =
-        currentAssistant === "medium" ? "GitHub" : "Medium";
-    }
-
     // clear previous chat and set intro message depending on assistant
     if (chatMessages) {
       chatMessages.innerHTML = "";
@@ -530,6 +523,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const endChatBtn = document.getElementById("endChatBtnModal");
   if (endChatBtn) {
     endChatBtn.addEventListener("click", endInterview);
+  }
+
+  // Close-chat X button (very low visibility) should just hide modal without summary
+  const closeChatBtn = document.getElementById("closeChatBtn");
+  if (closeChatBtn) {
+    closeChatBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); // don't trigger outside-click handler
+      closeModal();
+    });
   }
 
   // --- Kaggle Badges Injection ---
