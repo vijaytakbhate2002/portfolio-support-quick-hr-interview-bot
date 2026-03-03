@@ -1,5 +1,5 @@
 import pytest
-from rag_assisted_bots import GithubAssistant
+from rag_assisted_bots import Assistant
 import os
 
 # Mock constants if they are not available from the package directly or just use literals for tests
@@ -17,12 +17,13 @@ def assistant():
     # For now, we assume the environment where tests run has the necessary setup or we mock it
     # However, since this looks like an integration test, we try to initialize it for real
     
-    return GithubAssistant(
+    return Assistant(
         gpt_model_name=GPT_MODEL_NAME,
         vectordb_path=VECTORDB_PATH,
         collection_name=COLLECTION_NAME,
         temperature=TEMPERATURE,
-        rag_activated=True
+        rag_activated=True,
+        assistant_type="github"
     )
 
 test_question = "Tell me about a project where you worked on these skills: Flask, Python, AWS, LLM, RAG, ChromaDB, VectorDB etc."
