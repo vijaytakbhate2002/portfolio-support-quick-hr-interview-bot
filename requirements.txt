@@ -173,7 +173,6 @@ Pygments==2.19.2
 pyHanko==0.32.0
 pyhanko-certvalidator==0.29.0
 PyMuPDF==1.26.7
-pyparsing==3.2.5
 pypdf==6.5.0
 pyperclip==1.11.0
 PyPika==0.48.9
