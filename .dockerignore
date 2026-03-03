@@ -3,3 +3,5 @@ dev_env/
 Thumbs.db
 logs.log
 credentials
+test_github_architecture.py
+test_medium_architecture.py

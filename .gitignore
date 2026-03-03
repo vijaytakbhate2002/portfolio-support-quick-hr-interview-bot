@@ -44,3 +44,5 @@ src_backup/
 temp*
 github_data/
 medium_data/
+test_github_architecture.py
+test_medium_architecture.py
