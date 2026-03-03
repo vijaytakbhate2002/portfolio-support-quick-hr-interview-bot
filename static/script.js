@@ -51,6 +51,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const chatbotModal = document.getElementById("chatbotModal");
   const chatFab = document.getElementById("chatFab");
   const heroChatBtn = document.getElementById("heroChatBtn");
+  const heroChatBtnMedium = document.getElementById("heroChatBtnMedium");
+  const switchAssistantBtn = document.getElementById("switchAssistantBtn");
+
+  // keep track of which assistant is active: 'github' or 'medium'
+  let currentAssistant = "github";
 
   const chatbotHeader = document.querySelector(".chatbot-header");
   if (chatbotHeader) {
@@ -99,8 +104,41 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Open Modal
-  function openModal() {
+  // Open Modal with optional assistant type
+  function openModal(assistant = "github") {
+    currentAssistant = assistant;
+
+    // update title text
+    const titleSpan = document.getElementById("chatbotTitleText");
+    if (titleSpan) {
+      titleSpan.textContent =
+        currentAssistant === "medium" ? "Ask My Medium" : "Ask My GitHub";
+    }
+
+    // update switch button label so it shows the alternate target
+    const switchBtn = document.getElementById("switchAssistantBtn");
+    if (switchBtn) {
+      switchBtn.textContent =
+        currentAssistant === "medium" ? "GitHub" : "Medium";
+    }
+
+    // clear previous chat and set intro message depending on assistant
+    if (chatMessages) {
+      chatMessages.innerHTML = "";
+      const introDiv = document.createElement("div");
+      introDiv.className = "message ai-message intro-message";
+      let introText = "";
+      if (currentAssistant === "medium") {
+        introText =
+          "Hello! I'm Vijay's AI assistant supported by Medium RAG. Ask me about data science / Machine Learning / AI related topics, and I'll try to share insights from Vijay's Medium articles.";
+      } else {
+        introText =
+          "Hello! I'm Vijay's AI assistant supported by GitHub RAG. Ask me about his skills, projects, or experience to see if he's a good fit for your team.";
+      }
+      introDiv.innerHTML = `<div class="intro-badge">AI Assistant</div>${introText}`;
+      chatMessages.appendChild(introDiv);
+    }
+
     if (chatbotModal) chatbotModal.style.display = "flex";
   }
 
@@ -109,8 +147,19 @@ document.addEventListener("DOMContentLoaded", function () {
     if (chatbotModal) chatbotModal.style.display = "none";
   }
 
-  if (chatFab) chatFab.addEventListener("click", openModal);
-  if (heroChatBtn) heroChatBtn.addEventListener("click", openModal);
+  if (chatFab)
+    chatFab.addEventListener("click", () => openModal(currentAssistant));
+  if (heroChatBtn)
+    heroChatBtn.addEventListener("click", () => openModal("github"));
+  if (heroChatBtnMedium)
+    heroChatBtnMedium.addEventListener("click", () => openModal("medium"));
+
+  if (switchAssistantBtn) {
+    switchAssistantBtn.addEventListener("click", () => {
+      const newType = currentAssistant === "github" ? "medium" : "github";
+      openModal(newType);
+    });
+  }
 
   // Close on outside click -> treat as ending the interview (send summary)
   window.addEventListener("click", (e) => {
@@ -124,43 +173,41 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // --- Hint Rotation System ---
-  const hints = [
-    "💡 Tell me about a project where you worked on these skills: Flask, Python, AWS, LLM, RAG, ChromaDB, VectorDB etc.",
-    "💡 Describe your project where you worked on technologies like TensorFlow, PyTorch, Scikit-learn",
-    "💡 Have you worked on medical insurance prediction project?",
-  ];
+  const hints = {
+    github: [
+      "💡 Tell me about a project where you worked on these skills: Flask, Python, AWS, LLM, RAG, ChromaDB, VectorDB etc.",
+      "💡 Describe your project where you worked on technologies like TensorFlow, PyTorch, Scikit-learn",
+      "💡 Have you worked on medical insurance prediction project?",
+    ],
+    medium: [
+      "💡 Hey, today I want to learn about docker integration",
+      "💡 Hey can you suggest article to understand end to end ML project life cycle?",
+      "💡 Please explain location estimation and box plot?",
+    ],
+  };
 
   const hintElement = document.getElementById("hintText");
   let hintIndex = 0;
 
   function showNextHint() {
     if (!hintElement) return;
-
-    // Remove active class to reset animation
+    const list = hints[currentAssistant] || hints.github;
     hintElement.classList.remove("active");
-
-    // Trigger reflow to restart animation
     void hintElement.offsetWidth;
-
-    // Update text and add active class
-    hintElement.textContent = hints[hintIndex];
+    hintElement.textContent = list[hintIndex];
     hintElement.classList.add("active");
-
-    hintIndex = (hintIndex + 1) % hints.length;
+    hintIndex = (hintIndex + 1) % list.length;
   }
 
-  // Start hint rotation when modal opens
-  function openModalWithHints() {
-    if (chatbotModal) chatbotModal.style.display = "flex";
-    // Show first hint immediately
+  function openModalWithHints(assistant = "github") {
+    openModal(assistant);
+    hintIndex = 0;
     showNextHint();
-    // Then rotate every 4 seconds (matching animation duration + small gap)
     if (!window.hintInterval) {
       window.hintInterval = setInterval(showNextHint, 4500);
     }
   }
 
-  // Stop hints when modal closes
   function closeModalStopHints() {
     if (chatbotModal) chatbotModal.style.display = "none";
     if (hintElement) hintElement.classList.remove("active");
@@ -171,8 +218,16 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Update modal event listeners to use the new functions
-  if (chatFab) chatFab.addEventListener("click", openModalWithHints);
-  if (heroChatBtn) heroChatBtn.addEventListener("click", openModalWithHints);
+  if (chatFab)
+    chatFab.addEventListener("click", () =>
+      openModalWithHints(currentAssistant),
+    );
+  if (heroChatBtn)
+    heroChatBtn.addEventListener("click", () => openModalWithHints("github"));
+  if (heroChatBtnMedium)
+    heroChatBtnMedium.addEventListener("click", () =>
+      openModalWithHints("medium"),
+    );
 
   // Override closeModal for hint cleanup (but keep original behavior)
   const originalCloseModal = closeModal;
@@ -301,7 +356,8 @@ document.addEventListener("DOMContentLoaded", function () {
     chatMessages.appendChild(loadingDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
-    fetch("/chat", {
+    const endpoint = currentAssistant === "medium" ? "/chat_medium" : "/chat";
+    fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: message }),

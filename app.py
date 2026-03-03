@@ -5,7 +5,7 @@ load_dotenv()
 
 sender_email = os.getenv("EMAIL_USER")
 app_password = os.getenv("APP_PASS")
-recipient_email = "takbhatevijay@gmail.com" # Hardcoded recipient as per original code
+recipient_email = "takbhatevijay@gmail.com" 
 TOKEN_GITHUB = os.getenv("TOKEN_GITHUB")
 
 from flask import Flask, render_template, request, jsonify, send_from_directory, redirect, flash, url_for
@@ -28,7 +28,8 @@ github_assistant = Assistant(
     vectordb_path=GITHUB_VECTORDB_PATH,
     collection_name=COLLECTION_NAME,
     temperature=0.7,
-    rag_activated=True
+    rag_activated=True,
+    assistant_type="github"
 )
 
 medium_assistant = Assistant(
@@ -36,7 +37,8 @@ medium_assistant = Assistant(
     vectordb_path=MEDIUM_VECTORDB_PATH,
     collection_name=COLLECTION_NAME,
     temperature=0.7,
-    rag_activated=True
+    rag_activated=True,
+    assistant_type="medium"
 )
 
 def send_email_notification(subject, body):
@@ -108,6 +110,35 @@ def chat():
         return jsonify({'error': str(e)}), 500
 
 
+# new endpoint uses medium_assistant exactly like github route
+@app.route('/chat_medium', methods=['POST'])
+def chat_medium():
+    """
+        Same as /chat but routes requests to the medium_assistant instance.
+    """
+    try:
+        data = request.get_json()
+        user_message = data.get('message', '')
+
+        if not user_message:
+            return jsonify({'error': 'No message provided'}), 400
+
+        ai_result = medium_assistant.chat_with_model(user_message)
+        response_model = ai_result['response']
+
+        response_data = {
+            'response_message': response_model.response_message,
+            'reference_links': response_model.reference_links,
+            'rag_relevance': "--on" if ai_result.get('rag_relevance', '').lower() == "yes" else "--off",
+            'metadatas': ai_result.get('metadatas', [])
+        }
+
+        return jsonify(response_data)
+    except Exception as e:
+        print(f"Error in chat_medium: {e}")
+        return jsonify({'error': str(e)}), 500
+
+
 @app.route('/static/<path:filename>')
 def serve_static(filename):
     """ 
@@ -135,6 +166,7 @@ def send_message():
 
     return redirect(url_for('index'))
 
+
 @app.route("/track_download", methods=["POST"])
 def track_download():
     """
@@ -147,6 +179,7 @@ def track_download():
         return jsonify({'status': 'success'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
 
 @app.route("/end_chat", methods=["POST"])
 def end_chat():
@@ -171,6 +204,7 @@ def end_chat():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    app.run(host='0.0.0.0', port=5000, debug=True)
 

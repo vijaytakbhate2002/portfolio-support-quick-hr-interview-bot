@@ -4,7 +4,8 @@
     <div class="chatbot-header">
       <div class="chatbot-title">
         <i class="fas fa-robot"></i>
-        <span>Ask My GitHub</span>
+        <span id="chatbotTitleText">Ask My GitHub</span>
+        </button>
       </div>
       <div
         class="chatbot-controls"
@@ -23,6 +24,15 @@
         >
           End Interview
         </button>
+        <!-- barely visible close button: small X that simply hides modal -->
+        <button
+          id="closeChatBtn"
+          class="btn-close"
+          title="Close without summary"
+          style="font-size:0.6rem; opacity:0.15; background:transparent; border:none; color:#fff; margin-left:0.5rem; cursor:pointer;"
+        >
+          ✕
+        </button>
         <div class="status-dot"></div>
       </div>
     </div>
@@ -33,10 +43,6 @@
         his skills, projects, or experience to see if he's a good fit for your
         team.
       </div>
-      <!-- <div class="intro-hint">
-        💡 Try asking: Tell me about a project where you worked on these skills:
-        Flask, Python, AWS, LLM, RAG, ChromaDB, VectorDB etc.
-      </div> -->
     </div>
     <div class="chatbot-input-area">
       <div class="chatbot-hints-container" id="hintsContainer">
