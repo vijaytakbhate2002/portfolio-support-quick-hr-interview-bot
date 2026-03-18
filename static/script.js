@@ -20,27 +20,38 @@ document.addEventListener("DOMContentLoaded", function () {
   // --- Scroll Animations ---
   const observerOptions = {
     threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px" // trigger slightly before it comes into view
   };
 
-  const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
+        entry.target.classList.add("active");
+        observer.unobserve(entry.target); // Animate once
       }
     });
   }, observerOptions);
 
   // Select elements to animate
   const animatedElements = document.querySelectorAll(
-    ".section-title, .project-card, .timeline-item, .skill-card, .pub-card",
+    ".section-title, .section-subtitle, .project-card, .timeline-item, .skill-card, .pub-card, .about-content > *, .hero-container > *"
   );
   animatedElements.forEach((el) => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(30px)";
-    el.style.transition = "all 0.6s ease-out";
+    el.classList.add("reveal");
     observer.observe(el);
   });
+
+  // --- Navbar Scroll Effect ---
+  const navbar = document.querySelector(".navbar");
+  if (navbar) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+  }
 
   // --- Chatbot Logic ---
   const chatMessages = document.getElementById("chatMessages");
