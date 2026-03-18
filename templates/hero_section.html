@@ -17,27 +17,27 @@
         <button id="heroChatBtnMedium" class="btn btn-glow">
           Ask Medium <i class="fas fa-robot"></i>
         </button>
-        <a href="#projects" class="btn btn-glow"
-          >View Projects <i class="fas fa-arrow-right"></i
-        ></a>
-        <a
-          href="{{ url_for('static', filename='Vijay_Takbhate_Resume.pdf') }}"
-          class="btn btn-secondary"
-          download
-          onclick="downloadResume(event)"
-          >Download Resume <i class="fas fa-download"></i
-        ></a>
+        <a href="#projects" class="btn btn-glow">View Projects <i class="fas fa-arrow-right"></i></a>
+        <a href="{{ url_for('static', filename='Vijay_Takbhate_Resume.pdf') }}" class="btn btn-secondary" download
+          onclick="downloadResume(event)">Download Resume <i class="fas fa-download"></i></a>
+      </div>
+
+      <div class="contact-links" style="justify-content: flex-start; margin-top: 2rem;">
+        <a href="https://medium.com/@vijaytakbhate45" target="_blank" class="social-link"><i
+            class="fab fa-medium"></i></a>
+        <a href="https://www.linkedin.com/in/vijay-takbhate-b9231a236/" target="_blank" class="social-link"><i
+            class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/vijaytakbhate2002" target="_blank" class="social-link"><i
+            class="fab fa-github"></i></a>
+        <a href="https://www.kaggle.com/vijay20213" target="_blank" class="social-link"><i
+            class="fab fa-kaggle"></i></a>
       </div>
     </div>
 
     <!-- Profile Picture -->
     <div class="about-img-wrapper" style="justify-self: center">
       <div class="img-frame" style="width: 400px; height: 400px">
-        <img
-          src="{{ url_for('static', filename='profile_pic.jpg') }}"
-          alt="Vijay Takbhate"
-          class="profile-img"
-        />
+        <img src="{{ url_for('static', filename='profile_pic.jpg') }}" alt="Vijay Takbhate" class="profile-img" />
       </div>
     </div>
   </div>
