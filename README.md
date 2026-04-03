@@ -6,7 +6,6 @@
 [![ChromaDB](https://img.shields.io/badge/ChromaDB-RAG-purple)]()
 [![Docker](https://img.shields.io/badge/Docker-Containerized-brightgreen)]()
 [![GitHub Actions](https://img.shields.io/badge/CI-CD-blue)]()
-[![MLflow](https://img.shields.io/badge/MLflow-Tracking-informational)]()
 [![AWS EC2](https://img.shields.io/badge/AWS-EC2-yellow)]()
 
 ---
